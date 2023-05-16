@@ -1,0 +1,47 @@
+/* テーブル全体 */
+.table{
+    border-collapse: separate;
+    border-spacing: 0px 8px;
+    /* テーブル全体の配置 */
+    width: 100%;
+    margin: 1em auto;
+    padding:0em 1em;
+    /* 文字の配置 */
+    text-align: center;
+    /* 枠線の設定 */
+    border-radius: 10px;
+    border: 1px solid rgb(177, 177, 159);
+    /* 背景色 */
+    background: rgb(192, 185, 120);
+}
+
+/* テーブルヘッダ */
+.header th{
+    /* 配置 */
+    padding:5px 0;
+    line-height: 1.5;
+    /* 枠線 */
+    border: 1px solid rgb(161, 155, 86);
+    border-radius: 5px;
+    /* 背景色 */
+    background: rgb(212, 208, 134);
+    /* 文字 */
+    color: rgb(101, 96, 28);
+}
+
+/* テーブルデータ */
+.data td{
+    /* 配置 */
+    padding:10px 0;
+    line-height: 1.5;
+    /* 枠線 */
+    border-bottom: 1px solid rgb(161, 155, 86);
+    border-top: 1px solid rgb(161, 155, 86);
+    /* 文字 */
+    font-weight: 700;
+    letter-spacing: 0.05em
+}
+
+.data tr{ /* border-collapse:separateだとボーダーの設定が効かず、collapseだと枠線同士がくっつく */
+    background: rgb(248, 247, 242);
+}
