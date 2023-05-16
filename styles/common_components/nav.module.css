@@ -1,0 +1,25 @@
+/* 横並びに配置 */
+.list{
+    display: flex;
+    gap: 2em;
+}
+
+/* ホバーできる環境に対して適用 */
+@media(hover:hover){
+    /* マウスホバー時に協調 */
+    .list :hover{
+        color: aqua;
+    }
+}
+
+/* ホバーできない環境に対して適用 */
+@media (hover:none) {
+    .list{
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .list :active{
+        color:aqua;
+    }
+}
+
