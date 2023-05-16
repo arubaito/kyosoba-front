@@ -1,3 +1,5 @@
+import styles from "styles/modal.module.css"
+
 /* 
     汎用モーダルウィンドウ
     ※ 利用側でstate変数を定義してコンポーネントのpropsへ渡す
@@ -15,8 +17,8 @@ export default function Modal({show=false, setShow, children}){
     if(show){
         return (
             <div>
-                <div id="overlay" onClick={closeModal}>
-                <div id="content" onClick={(e) => e.stopPropagation()}>
+                <div className={styles.overlay} onClick={closeModal}>
+                <div className={styles.content} onClick={(e) => e.stopPropagation()}>
                     {children}
                     <p><button onClick={closeModal}>close</button></p>
                 </div>
