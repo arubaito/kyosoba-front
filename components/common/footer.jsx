@@ -1,3 +1,4 @@
+import Container from "./Container";
 import Logo from "./logo";
 import styles from "styles/common_components/footer.module.css"
 
@@ -7,10 +8,12 @@ import styles from "styles/common_components/footer.module.css"
 export default function Footer(){
     return (
         <footer className={styles.wrapper}>
-            <div className={styles.flexContainer}>
-                <Logo />
-                なんか
-            </div>
+            <Container>
+                <div className={styles.flexContainer}>
+                    <Logo />
+                    なんか
+                </div>
+            </Container>
         </footer>
     );
 }
