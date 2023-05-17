@@ -1,5 +1,7 @@
 .icon{
     color: rgb(110, 198, 57);
+    stroke:white;
+    stroke-width: 2.0em;
     font-size: var(--heading2);
 }
 
