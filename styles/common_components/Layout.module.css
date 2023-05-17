@@ -4,7 +4,7 @@
  */
 .backgroundContainer{
     /* 背景画像 */
-    background-image: url('../../public/image/background.jpg');
+    background-image: url('/image/background.jpg');
     background-attachment: fixed;
     background-size: 100% auto;
     background-position: center;
