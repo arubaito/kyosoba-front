@@ -9,9 +9,9 @@ import Button from "components/utils/Button";
  */
 export default function BackButton({ eventHandler, children }) {
     return (
-        <Button onClick={eventHandler}>
+        <Button eventHandler={eventHandler}>
             <FontAwesomeIcon className={styles.icon} icon={faLeftLong} />
             <span className={styles.text}> 戻る</span>
         </Button>
-    )
+    );
 }
