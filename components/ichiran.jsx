@@ -24,7 +24,7 @@ export default function Ichiran({setShow}){
             <tbody className={styles.data}>
                 <tr>
                     <td>
-                        <Link href="/horse">マリモダイヤモンド</Link>
+                        <Link href="/horse"><div>マリモダイヤモンド</div></Link>
                     </td>
                     <td>牝4</td>
                     <td>

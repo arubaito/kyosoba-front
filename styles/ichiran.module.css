@@ -45,3 +45,8 @@
 .data tr{ /* border-collapse:separateだとボーダーの設定が効かず、collapseだと枠線同士がくっつく */
     background: rgb(248, 247, 242);
 }
+
+/* 行ホバー時に行全体の色を変更 */
+.table tbody tr:hover td{
+    background-color: rgb(254, 207, 127);
+}
