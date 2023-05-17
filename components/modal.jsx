@@ -1,4 +1,5 @@
 import styles from "styles/modal.module.css"
+import BackButton from "./utils/BackButton";
 
 /* 
     汎用モーダルウィンドウ
@@ -19,8 +20,10 @@ export default function Modal({show=false, setShow, children}){
             <div>
                 <div className={styles.overlay} onClick={closeModal}>
                 <div className={styles.content} onClick={(e) => e.stopPropagation()}>
-                    {children}
-                    <p><button onClick={closeModal}>close</button></p>
+                    {children} {/* モーダルウィンドウで表示する中身 */}
+                    <div className={styles.button}>
+                        <BackButton eventHandler={closeModal}></BackButton>
+                    </div>
                 </div>
                 </div>
             </div>
