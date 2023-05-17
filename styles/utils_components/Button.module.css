@@ -1,0 +1,10 @@
+/* ボタンの形 */
+.button{
+    /* transformプロパティを指定する場合はインライン要素以外が必須 */
+    display: inline-block;
+    background-color: rgb(118, 119, 114);
+    padding: 0.3em 1.5em;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+}

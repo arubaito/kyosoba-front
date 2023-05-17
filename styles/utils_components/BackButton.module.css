@@ -1,0 +1,8 @@
+.icon{
+    color: rgb(110, 198, 57);
+    font-size: var(--heading2);
+}
+
+.text{
+    font-size: var(--heading2);
+}
