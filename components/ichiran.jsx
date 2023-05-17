@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "styles/ichiran.module.css"
 import MiruButton from "components/utils/MiruButton";
+import SeireiIcon from "components/utils/SeireiIcon";
 
 /*
     馬名の一覧を表示するコンポーネント
@@ -26,7 +27,9 @@ export default function Ichiran({setShow}){
                     <td>
                         <Link href="/horse"><div>マリモダイヤモンド</div></Link>
                     </td>
-                    <td>牝4</td>
+                    <td>
+                        <SeireiIcon>牝4</SeireiIcon>
+                    </td>
                     <td>
                         <MiruButton eventHandler={openModal} />
                     </td>
@@ -35,7 +38,9 @@ export default function Ichiran({setShow}){
                     <td>
                         <Link href="/horse">シロフネ</Link>
                     </td>
-                    <td>牝3</td>
+                    <td>
+                        <SeireiIcon>牝3</SeireiIcon>
+                    </td>
                     <td>
                         <MiruButton eventHandler={openModal} />
                     </td>
@@ -44,7 +49,9 @@ export default function Ichiran({setShow}){
                     <td>
                         <Link href="/horse">ベストスピード</Link>
                     </td>
-                    <td>牝4</td>
+                    <td>
+                        <SeireiIcon>牝4</SeireiIcon>
+                    </td>
                     <td>
                         <MiruButton eventHandler={openModal} />
                     </td>
@@ -53,7 +60,9 @@ export default function Ichiran({setShow}){
                     <td>
                         <Link href="/horse">マリモダイヤモンド</Link>
                     </td>
-                    <td>牝4</td>
+                    <td>
+                        <SeireiIcon>牝4</SeireiIcon>
+                    </td>
                     <td>
                         <MiruButton eventHandler={openModal} />
                     </td>
@@ -62,7 +71,9 @@ export default function Ichiran({setShow}){
                     <td>
                         <Link href="/horse">シロフネ</Link>
                     </td>
-                    <td>牝3</td>
+                    <td>
+                        <SeireiIcon>牝3</SeireiIcon>
+                    </td>
                     <td>
                         <MiruButton eventHandler={openModal} />
                     </td>
@@ -71,7 +82,9 @@ export default function Ichiran({setShow}){
                     <td>
                         <Link href="/horse">ベストスピード</Link>
                     </td>
-                    <td>牝4</td>
+                    <td>
+                        <SeireiIcon>牝4</SeireiIcon>
+                    </td>
                     <td>
                         <MiruButton eventHandler={openModal} />
                     </td>

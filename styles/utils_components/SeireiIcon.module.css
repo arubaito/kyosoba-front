@@ -1,0 +1,8 @@
+.icon{
+    display: inline-block;
+    background-color: rgb(171, 160, 157);
+    padding: 0.3em 1.5em;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
