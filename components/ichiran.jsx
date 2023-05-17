@@ -1,11 +1,16 @@
 import Link from "next/link";
 import styles from "styles/ichiran.module.css"
+import MiruButton from "components/utils/MiruButton";
 
 /*
     馬名の一覧を表示するコンポーネント
     とりあえずデータはハードコード
  */
 export default function Ichiran({setShow}){
+    
+    // モーダルウィンドウをひらく関数
+    const openModal = () => setShow(true);
+
     return (
         <>
         <table className={styles.table}>
@@ -23,7 +28,7 @@ export default function Ichiran({setShow}){
                     </td>
                     <td>牝4</td>
                     <td>
-                        <button onClick={() => setShow(true)}>Click</button>
+                        <MiruButton eventHandler={openModal} />
                     </td>
                 </tr>
                 <tr>
@@ -32,7 +37,7 @@ export default function Ichiran({setShow}){
                     </td>
                     <td>牝3</td>
                     <td>
-                        <button onClick={() => setShow(true)}>Click</button>
+                        <MiruButton eventHandler={openModal} />
                     </td>
                 </tr>
                 <tr>
@@ -41,7 +46,7 @@ export default function Ichiran({setShow}){
                     </td>
                     <td>牝4</td>
                     <td>
-                        <button onClick={() => setShow(true)}>Click</button>
+                        <MiruButton eventHandler={openModal} />
                     </td>
                 </tr>
                 <tr>
@@ -50,7 +55,7 @@ export default function Ichiran({setShow}){
                     </td>
                     <td>牝4</td>
                     <td>
-                        <button onClick={() => setShow(true)}>Click</button>
+                        <MiruButton eventHandler={openModal} />
                     </td>
                 </tr>
                 <tr>
@@ -59,7 +64,7 @@ export default function Ichiran({setShow}){
                     </td>
                     <td>牝3</td>
                     <td>
-                        <button onClick={() => setShow(true)}>Click</button>
+                        <MiruButton eventHandler={openModal} />
                     </td>
                 </tr>
                 <tr>
@@ -68,7 +73,7 @@ export default function Ichiran({setShow}){
                     </td>
                     <td>牝4</td>
                     <td>
-                        <button onClick={() => setShow(true)}>Click</button>
+                        <MiruButton eventHandler={openModal} />
                     </td>
                 </tr>
             </tbody>
