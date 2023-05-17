@@ -1,0 +1,32 @@
+/* 
+    背景画像をぼかして表示
+    参考⇒https://kuroeveryday.blogspot.com/2017/04/blur-effects-to-background.html
+ */
+.backgroundContainer{
+    /* 背景画像 */
+    background-image: url('../../public/image/background.jpg');
+    background-attachment: fixed;
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: repeat;
+    /* 大きさ */
+    min-width: 100%;
+    padding: 2em 0;
+    /* 背景を */
+    position: relative;
+    /* コンテナの中身を前面に */
+    z-index: 0;
+}
+.backgroundContainer::before{
+    content: '';
+    position: absolute;
+    /* ぼかすと枠がぼけるためマイナス値 */
+    top: -2px;
+    bottom: -2px;
+    right: -2px;
+    left: -2px;
+    background: inherit;
+    filter: blur(2px);
+    /* 背景を後ろに */
+    z-index: -1;
+}

@@ -1,6 +1,7 @@
 import Header from "components/common/header";
 import Footer from "components/common/footer";
 import Container from "./Container";
+import styles from "styles/common_components/Layout.module.css"
 
 /* 
     ページ共通のヘッダやフッタのレイアウトを表示する 
@@ -10,9 +11,11 @@ export default function Layout({children}){
     return (
         <>
             <Header />
-                <Container>
-                    {children}
-                </Container>
+                <div className={styles.backgroundContainer}>
+                    <Container>
+                        {children}
+                    </Container>
+                </div>
             <Footer />
         </>
 
