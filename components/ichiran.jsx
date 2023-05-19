@@ -25,10 +25,10 @@ export default function Ichiran({setShow}){
             <tbody className={styles.data}>
                 <tr>
                     <td>
-                        <Link href="/horse"><div>マリモダイヤモンド</div></Link>
+                        <Link href="/horse"><div>ソダシ</div></Link>
                     </td>
                     <td>
-                        <SeireiIcon>牝4</SeireiIcon>
+                        <SeireiIcon>牝5</SeireiIcon>
                     </td>
                     <td>
                         <MiruButton eventHandler={openModal} />
