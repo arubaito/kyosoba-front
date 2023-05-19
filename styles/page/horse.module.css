@@ -12,9 +12,8 @@
     background-color: rgba(0, 255, 255, 0.5);
 }
 
-
 /* フレキシブルボックス */
-.contents{
+.flexibleContents{
     display: flex;
     flex-direction: column;
 }
@@ -23,7 +22,8 @@
     height: auto;
 }
 @media (min-width:768px) {
-    .contents{
+    /* 画面サイズが大きい場合は横並び */
+    .flexibleContents{
         flex-direction: row;
     }
     .horsePictureContainer{

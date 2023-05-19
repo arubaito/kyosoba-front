@@ -10,13 +10,14 @@ export default function Horse({ horseName }) {
             <div className={styles.horseInfo}>
                 {/* 馬名 */}
                 <UmaInfoName />
-                <div className={styles.contents}>
+                <div className={styles.flexibleContents}>
                     {/* 馬の写真 */}
                     <div className={styles.horsePictureContainer}>
                         <Image
                             src={sodashi}
                             className={styles.horsePicture}
                         />
+                        <div style={{border:"1px solid black", margin:"0 1em"} }> 写真を拡大する(おいおい実装)</div>
                     </div>
                     {/* 馬の情報 */}
                     <div className={styles.horseInfoDetail}>
