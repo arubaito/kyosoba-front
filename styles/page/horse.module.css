@@ -1,0 +1,35 @@
+/* 馬の情報描画領域 */
+.horseInfo{
+    background-color: white;
+}
+/* 写真の配置 */
+.horsePictureContainer{
+    text-align: center;
+    background-color: rgba(128, 255, 0, 0.5);
+}
+
+.horseInfoDetail{
+    background-color: rgba(0, 255, 255, 0.5);
+}
+
+
+/* フレキシブルボックス */
+.contents{
+    display: flex;
+    flex-direction: column;
+}
+.horsePicture{
+    width: 80%;
+    height: auto;
+}
+@media (min-width:768px) {
+    .contents{
+        flex-direction: row;
+    }
+    .horsePictureContainer{
+        flex-basis: 50%;
+    }
+    .horseInfoDetail{
+        flex-basis: 50%;
+    }
+}
