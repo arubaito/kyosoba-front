@@ -1,0 +1,43 @@
+.iconContainer{
+    /* コンテナの色・形 */
+    border-radius: 10px;
+    background-color: rgb(118, 119, 114);
+    border: 1px solid white;
+    color: white;
+    text-align: center;
+    /* 比率を維持した正方形 */
+    width: 100%; /* グリッドレイアウトのアイテムの幅に正方形の長さを合わせる */
+    aspect-ratio: 1 / 1;
+}
+
+/* コンテナ内の文字をグリッドレイアウトで配置 */
+.iconContainer{
+    /* 2*1の表 */
+    display: grid;
+    grid-template-columns: 33% 67%;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+        "icon title" 
+        "contents contents";
+    /* 文字の配置場所 */
+    align-items: center;
+}
+/*  */
+.iconContainer .iconContainer{
+    grid-area: icon;
+}
+.iconContainer .title{
+    grid-area:title
+}
+.iconContainer .contents{
+    grid-area: contents;
+}
+
+/* 誕生日とかのアイコンに対する指定 */
+.iconContainer svg{
+    /* アイコンの配置場所 */
+    margin: 0 auto;
+    /* アイコンの大きさ */
+    font-size: 40px;
+}
+

@@ -1,0 +1,20 @@
+/* 詳細情報アイコン */
+.horseInfoIconGroup{
+    /* アイコングループ表示領域 */
+    width: 90%;
+    margin: 0 auto;
+    /* グリッドレイアウトで3*3の行列にする */
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: auto auto;
+    /* アイテム設定 */
+    justify-items: center;
+    /* (開ける場合)アイコンコンテナ間の隙間 */
+    /* gap: 1em; */
+}
+@media (min-width: 768px) {
+    .horseInfoIconGroup{
+        /* 画面サイズが大きい場合は4列 */
+        grid-template-columns: 25% 25% 25% 25%;
+    }
+}
