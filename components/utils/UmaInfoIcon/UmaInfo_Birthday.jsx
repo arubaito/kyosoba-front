@@ -1,7 +1,7 @@
-import UmaInfo from "components/utils/UmaInfoIcon/UmaInfo";
+import UmaInfo from "components/utils/UmaInfoIcon/UmaInfoIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCakeCandles } from "@fortawesome/free-solid-svg-icons";
-import styles from "styles/utils_components/UmaInfoIcon/UmaInfo.module.css";
+import styles from "styles/utils_components/UmaInfoIcon/UmaInfoIcon.module.css";
 
 export default function UmaInfoBirthday({birthday}){
     return (

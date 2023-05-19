@@ -1,4 +1,4 @@
-import UmaInfo from "components/utils/UmaInfoIcon/UmaInfo";
+import UmaInfo from "components/utils/UmaInfoIcon/UmaInfoIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFlagCheckered } from "@fortawesome/free-solid-svg-icons";
 
