@@ -1,0 +1,33 @@
+/* 馬名と性齢 */
+.horseNameContents{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* 馬名と性齢 */
+.horseNameContents{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+/* 縦線と配置場所 */ /*参考⇒https://www.dentist-sato.com/ */
+.horseNameContents .Name{
+    position: relative;
+    margin-right: 120px; /* 縦線を配置する領域確保 */
+    margin-left: 10px;
+}
+.horseNameContents .discript{
+    flex-grow: 1; /*-- 残りの余白を埋める --*/
+}
+.horseNameContents .Name::before{
+    content: "";
+    width: 3px;
+    height: 36px;
+    background-color: #d7d7d7;
+    border-radius: 2px;
+    /* 縦線の配置 */
+    position: absolute;
+    top: 0.3em;
+    right: -60px;/* 縦線をmarginに配置 */
+}
