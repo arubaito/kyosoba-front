@@ -10,11 +10,5 @@
     /* アイテム設定 */
     justify-items: center;
     /* (開ける場合)アイコンコンテナ間の隙間 */
-    /* gap: 1em; */
-}
-@media (min-width: 768px) {
-    .horseInfoIconGroup{
-        /* 画面サイズが大きい場合は4列 */
-        grid-template-columns: 25% 25% 25% 25%;
-    }
+    gap: 0.2em;
 }
