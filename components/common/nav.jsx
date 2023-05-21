@@ -7,13 +7,13 @@ export default function Nav(){
         <nav>
             <ul className={styles.list}>
                 <li>
-                    <Link href="/">トップ</Link>
+                    <Link href="/">メニュー１</Link>
                 </li>
                 <li>
-                    <Link href="/">工事中</Link>
+                    <Link href="/">メニュー２</Link>
                 </li>
                 <li>
-                    <Link href="/">ふが</Link>
+                    <Link href="/">メニュー３</Link>
                 </li>
             </ul>
         </nav>
