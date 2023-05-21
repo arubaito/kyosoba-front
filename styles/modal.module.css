@@ -16,7 +16,18 @@
 /* モーダルウィンドウ本体 */
 .content{
     z-index: 2;
-    width: 50%;
+    /* 枠の大きさ */
+    width: 70%;
+    height: 95%;
     padding: 1em;
-    background-color: white;
+    /* 表示内容の位置 */
+    text-align: center;
+    /* 枠線 */
+    background-color: rgb(236, 237, 231);
+    border-radius: 5px;
+}
+
+/* モーダルウィンドウ上の閉じるボタン */
+.button{
+    text-align: right;
 }

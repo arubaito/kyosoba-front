@@ -1,4 +1,6 @@
-import Modal from "@/components/modal";
+import Ichiran from "components/ichiran";
+import Kettouhyou from "components/kettouhyou";
+import Modal from "components/modal";
 import { useState } from "react";
 
 export default function Home() {
@@ -7,11 +9,14 @@ export default function Home() {
   const [show, setShow] = useState(false);
 
   return (
-    <>
-      <button onClick={() => setShow(true)}>Click</button>
-      <Modal show={show} setShow={setShow}>
-        <p>これがモーダルウィンドウです</p>
-      </Modal>
-    </>
+      <div>
+        {/* 競走馬の一覧 */}
+        <Ichiran setShow={setShow}></Ichiran>
+
+        {/* モーダルウィンドウを配置(childrenが表示される中身) */}
+        <Modal show={show} setShow={setShow}>
+          <Kettouhyou /> 
+        </Modal>
+      </div>
   )
 }
