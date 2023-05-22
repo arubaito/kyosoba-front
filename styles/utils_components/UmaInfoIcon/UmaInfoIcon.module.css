@@ -22,8 +22,8 @@
     /* 文字の配置場所 */
     align-items: center;
 }
-/*  */
-.iconContainer .iconContainer{
+/* グリッドレイアウト内の各アイテムの配置 */
+.iconContainer .icon{
     grid-area: icon;
 }
 .iconContainer .title{

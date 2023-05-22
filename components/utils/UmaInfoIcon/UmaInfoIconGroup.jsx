@@ -1,6 +1,6 @@
 import styles from "styles/utils_components/UmaInfoIcon/UmaInfoIconGroup.module.css"
 import UmaInfoBirthday from 'components/utils/UmaInfoIcon/UmaInfo_Birthday';
-import UmaInfoKyusha from 'components/utils/UmaInfoIcon/UmaInfo_Kyusha';
+import UmaInfoKyusya from 'components/utils/UmaInfoIcon/UmaInfo_Kyusya';
 import UmaInfoTsusanSeiseki from 'components/utils/UmaInfoIcon/Umainfo_Tsusanseiseki';
 import UmaInfoSyokin from 'components/utils/UmaInfoIcon/UmaInfo_Syokin';
 import UmaInfoBanushi from 'components/utils/UmaInfoIcon/UmaInfo_Banushi';
@@ -11,17 +11,27 @@ import UmaInfoKettou from 'components/utils/UmaInfoIcon/Umainfo_kettou';
 /*
     馬情報のアイコングループ
  */
-export default function UmaInfoIconGroup(){
+export default function UmaInfoIconGroup({
+    birthday,
+    kyusya,
+    seisansya,
+    jockey,
+    banushi,
+    tsusanseiseki,
+    syokin,
+    ketto,
+}){
+    
     return (
     <div className={styles.horseInfoIconGroup}>
-        <UmaInfoBirthday />
-        <UmaInfoKyusha />
-        <UmaInfoBanushi />
-        <UmaInfoSeisansya />
-        <UmaInfoJockey />
+        <UmaInfoBirthday birthday={birthday}/>
+        <UmaInfoKyusya kyusya={kyusya}/>
+        <UmaInfoBanushi banushi={banushi}/>
+        <UmaInfoSeisansya seisansya={seisansya}/>
+        <UmaInfoJockey jockey={jockey}/>
         <UmaInfoKettou />
-        <UmaInfoTsusanSeiseki />
-        <UmaInfoSyokin />
+        <UmaInfoTsusanSeiseki tsusanseiseki={tsusanseiseki}/>
+        <UmaInfoSyokin syokin={syokin}/>
     </div>
 );
 }

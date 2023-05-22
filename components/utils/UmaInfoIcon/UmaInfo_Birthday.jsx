@@ -8,7 +8,7 @@ export default function UmaInfoBirthday({birthday}){
         <UmaInfo>
             <FontAwesomeIcon className={styles.icon} icon={faCakeCandles} /> 
             <p className={styles.title}>生年月日</p>
-            <p className={styles.contents}>2018年3月8日</p>
+            <p className={styles.contents}>{birthday}</p>
         </UmaInfo>
     );
 }

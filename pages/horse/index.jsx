@@ -12,8 +12,8 @@ import { getKyosobaInfo } from 'lib/api';
 export default function Horse({ 
     name,
     birthday,
-    kyusha,
-    seisansyla,
+    kyusya,
+    seisansya,
     jockey,
     banushi,
     tsusanseiseki,
@@ -34,9 +34,18 @@ export default function Horse({
                         />
                         <div style={{border:"1px solid black", margin:"0 1em"} }> 写真を拡大する(おいおい実装)</div>
                     </div>
-                    {/* 馬の情報 */}
+                    {/* 馬の情報：引数で渡された情報をアイコンに渡す */}
                     <div className={styles.horseInfoDetail}>
-                        <UmaInfoIconGroup />
+                        <UmaInfoIconGroup 
+                            birthday={birthday}
+                            kyusya={kyusya}
+                            seisansya={seisansya}
+                            jockey={jockey}
+                            banushi={banushi}
+                            tsusanseiseki={tsusanseiseki}
+                            syokin={syokin}
+                            // ketto={ketto} どう表示するか考えちゅ
+                        />
                     </div>
                 </div>
             </div>
@@ -58,7 +67,7 @@ export async function getServerSideProps(){
         props:{
             name:response.name,
             birthday:response.birthday,
-            kyusha: response.kyusha,
+            kyusya: response.kyusya,
             seisansya: response.seisansya,     
             jockey: response.jockey,
             banushi: response.banushi,
