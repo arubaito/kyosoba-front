@@ -4,21 +4,23 @@ import sodashi from 'public/image/sodashi.jpg'; // 画像をimportするとNext.
 import UmaInfoIconGroup from 'components/utils/UmaInfoIcon/UmaInfoIconGroup';
 import UmaInfoName from 'components/utils/UmaInfoName/UmaInfoName';
 import { getKyosobaInfo } from 'lib/api';
+import UmaInfoKettou from 'components/utils/UmaInfoIcon/Umainfo_kettou';
+import KettouhyouSyousai from 'components/KettouhyouSyousai';
 
 /*
     競走馬詳細情報画面
     getServerSidePropsでサーバから取得してきた競走馬の情報を表示
  */
 export default function Horse({ 
-    name,
-    birthday,
-    kyusya,
-    seisansya,
-    jockey,
-    banushi,
-    tsusanseiseki,
-    syokin,
-    ketto,
+        name,
+        birthday,
+        kyusya,
+        seisansya,
+        jockey,
+        banushi,
+        tsusanseiseki,
+        syokin,
+        ketto,
     }) {
     return (
         <>
@@ -31,6 +33,7 @@ export default function Horse({
                         <Image
                             src={sodashi}
                             className={styles.horsePicture}
+                            placeholder="blur"
                         />
                         <div style={{border:"1px solid black", margin:"0 1em"} }> 写真を拡大する(おいおい実装)</div>
                     </div>
@@ -48,6 +51,10 @@ export default function Horse({
                         />
                     </div>
                 </div>
+                <UmaInfoKettou>
+                    <KettouhyouSyousai />
+                </UmaInfoKettou>
+                
             </div>
         </>
     );
@@ -62,7 +69,7 @@ export async function getServerSideProps(){
     const response = await getKyosobaInfo();
     console.log(response);
 
-    // 競走馬の各情報をオブジェクト形式に
+    // 競走馬の各情報をページコンポーネントへリターン
     return {
         props:{
             name:response.name,

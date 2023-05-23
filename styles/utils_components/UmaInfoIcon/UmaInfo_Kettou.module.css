@@ -1,0 +1,22 @@
+.container{
+    /* コンテナの色・形 */
+    border-radius: 10px;
+    background-color: rgb(118, 119, 114);
+    border: 1px solid white;
+    color: white;
+    text-align: center;
+    margin: 1em;
+}
+.contents{
+    color: black;
+}
+
+
+/* 誕生日とかのアイコンに対する指定 */
+.iconContainer svg{
+    /* アイコンの配置場所 */
+    margin: 0 auto;
+    /* アイコンの大きさ */
+    font-size: 40px;
+}
+

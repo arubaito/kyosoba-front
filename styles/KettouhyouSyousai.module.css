@@ -1,0 +1,18 @@
+.title{
+    font-size: large;
+    color: rgb(0, 160, 0);
+}
+
+.table{
+    /* 罫線 */
+    border-collapse: separate;
+    width: 90%;
+    margin: 0.3em auto;
+    
+}
+
+.table td{
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+}

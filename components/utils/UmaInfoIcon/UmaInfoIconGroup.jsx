@@ -29,7 +29,6 @@ export default function UmaInfoIconGroup({
         <UmaInfoBanushi banushi={banushi}/>
         <UmaInfoSeisansya seisansya={seisansya}/>
         <UmaInfoJockey jockey={jockey}/>
-        <UmaInfoKettou />
         <UmaInfoTsusanSeiseki tsusanseiseki={tsusanseiseki}/>
         <UmaInfoSyokin syokin={syokin}/>
     </div>
