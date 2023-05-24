@@ -7,7 +7,7 @@
     /* 罫線 */
     border-collapse: separate;
     width: 90%;
-    margin: 0.3em auto;
+    margin: 0.5em auto;
     
 }
 
@@ -15,4 +15,5 @@
     border: 1px solid black;
     border-radius: 5px;
     background-color: white;
+    
 }

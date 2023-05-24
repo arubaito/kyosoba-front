@@ -76,11 +76,11 @@ export async function getServerSideProps(){
             birthday:response.birthday,
             kyusya: response.kyusya,
             seisansya: response.seisansya,     
-            jockey: response.jockey,
             banushi: response.banushi,
-            tsusanseiseki: response.tsusanseiseki,
             syokin: response.syokin,
-            ketto: response.ketto,
+            // tsusanseiseki: response.tsusanSeiseki.s
+            tsusanseiseki: `${response.tsusanSeiseki.syobusu}戦${response.tsusanSeiseki.syorisu}勝`,
+            ketto: response.sosen,
         },
     }
 }
