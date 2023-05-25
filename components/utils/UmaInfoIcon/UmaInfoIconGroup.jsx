@@ -5,7 +5,6 @@ import UmaInfoTsusanSeiseki from 'components/utils/UmaInfoIcon/Umainfo_Tsusansei
 import UmaInfoSyokin from 'components/utils/UmaInfoIcon/UmaInfo_Syokin';
 import UmaInfoBanushi from 'components/utils/UmaInfoIcon/UmaInfo_Banushi';
 import UmaInfoSeisansya from 'components/utils/UmaInfoIcon/UmaInfo_Seisansya';
-import UmaInfoJockey from 'components/utils/UmaInfoIcon/Umainfo_Jockey';
 import UmaInfoKettou from 'components/utils/UmaInfoIcon/Umainfo_kettou';
 
 /*
@@ -28,7 +27,6 @@ export default function UmaInfoIconGroup({
         <UmaInfoKyusya kyusya={kyusya}/>
         <UmaInfoBanushi banushi={banushi}/>
         <UmaInfoSeisansya seisansya={seisansya}/>
-        <UmaInfoJockey jockey={jockey}/>
         <UmaInfoTsusanSeiseki tsusanseiseki={tsusanseiseki}/>
         <UmaInfoSyokin syokin={syokin}/>
     </div>
