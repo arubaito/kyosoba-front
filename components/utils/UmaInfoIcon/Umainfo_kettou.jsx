@@ -12,7 +12,7 @@ export default function UmaInfoKettou({ children }) {
                 <span>血統</span>
             </h1>
             <p>(作成中)血統表は5-7世代見れる様にする</p>
-            <p className={styles.contents}>{children}</p>
+            <div className={styles.contents}>{children}</div>
             
         </div>
     );
