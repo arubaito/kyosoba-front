@@ -15,7 +15,7 @@
     margin: 0em 1em;
     /* フレキシブルボックスで横並びにする */
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
 }
 
 /* 直近成績内の各成績のボックスの中身 */
