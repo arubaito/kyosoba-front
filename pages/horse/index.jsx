@@ -6,6 +6,7 @@ import UmaInfoName from 'components/utils/UmaInfoName/UmaInfoName';
 import { getKyosobaInfo } from 'lib/api';
 import UmaInfoKettou from 'components/utils/UmaInfoIcon/Umainfo_kettou';
 import KettouhyouSyousai from 'components/KettouhyouSyousai';
+import UmaInfoTyokkinSeiseki from 'components/utils/UmaInfoIcon/Umainfo_TyokkinSeiseki';
 
 /*
     競走馬詳細情報画面
@@ -20,6 +21,7 @@ export default function Horse({
         banushi,
         tsusanseiseki,
         syokin,
+        raceResultList,
         ketto,
     }) {
     return (
@@ -54,6 +56,9 @@ export default function Horse({
                 <UmaInfoKettou>
                     <KettouhyouSyousai />
                 </UmaInfoKettou>
+                <UmaInfoTyokkinSeiseki
+                    raceResultList={raceResultList}
+                 />
                 
             </div>
         </>
@@ -78,8 +83,8 @@ export async function getServerSideProps(){
             seisansya: response.seisansya,     
             banushi: response.banushi,
             syokin: response.syokin,
-            // tsusanseiseki: response.tsusanSeiseki.s
             tsusanseiseki: `${response.tsusanSeiseki.syobusu}戦${response.tsusanSeiseki.syorisu}勝`,
+            raceResultList: response.raceResultList,
             ketto: response.sosen,
         },
     }

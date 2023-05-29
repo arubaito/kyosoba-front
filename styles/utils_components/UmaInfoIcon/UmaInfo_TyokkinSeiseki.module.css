@@ -1,0 +1,58 @@
+.seisekiGroupContainer{
+    /* コンテナの色・形 */
+    border-radius: 10px;
+    background-color: rgb(118, 119, 114);
+    border: 1px solid white;
+    color: white;
+    text-align: center;
+    margin: 1em;
+}
+
+/* 直近成績内の各ボックス */
+.seisekiContainer{
+    color: black;
+    background-color: white;
+    margin: 0em 1em;
+    /* フレキシブルボックスで横並びにする */
+    display: flex;
+    justify-content: start;
+}
+
+/* 直近成績内の各成績のボックスの中身 */
+.seisekiContents{
+    border: 1px solid black;
+    margin: 1em 0em;
+    display: grid;
+    grid-template-columns: 20% 40% 40%;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas: 
+        "date date rank"
+        "name name rank"
+        "kyori kyori rank"
+        "jockey jockey jockey"
+        "waku waku waku";
+    text-align: left;
+    align-items: center;
+    font-size: medium;
+}
+.raceName{
+    grid-area: name;
+}
+.date{
+    grid-area: date;
+}
+.rank{
+    grid-area: rank;
+    text-align: center;
+    font-weight: 900;
+    font-size: xx-large;
+}
+.kyori{
+    grid-area: kyori;
+}
+.jockey{
+    grid-area: jockey;
+}
+.waku{
+    grid-area: waku;
+}
