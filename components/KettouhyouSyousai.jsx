@@ -5,16 +5,16 @@ import { faVenusMars } from "@fortawesome/free-solid-svg-icons";
 /* 
     血統表を表示するコンポーネント
  */
-export default function KettouhyouSyousai() {
+export default function KettouhyouSyousai({sosen}) {
     return (
         <>
             <table className={styles.table}>
                 <tbody>
                     {/* 父方 */}
                     <tr>
-                        <td rowSpan="16">エピファネイア</td>
-                        <td rowSpan="8">シンボリクリスエス</td>
-                        <td rowSpan="4">Kris.S</td>
+                        <td rowSpan="16">{sosen.fatherName}</td>
+                        <td rowSpan="8">{sosen.fathersFatherName}</td>
+                        <td rowSpan="4">{sosen.fathersFathersFatherName}</td>
                         <td rowSpan="2">A</td>
                         <td>Roberto</td>
                     </tr>
@@ -29,7 +29,7 @@ export default function KettouhyouSyousai() {
                         <td>Sharp Queen</td>
                     </tr>
                     <tr>
-                        <td rowSpan="4">Tee Kay</td>
+                        <td rowSpan="4">{sosen.fathersFathersMatherName}</td>
                         <td rowSpan="2">Tee Kay</td>
                         <td>Tri Argo</td>
                     </tr>
@@ -45,8 +45,8 @@ export default function KettouhyouSyousai() {
                     </tr>
 
                     <tr>
-                        <td rowSpan="8">シーザリオ</td>
-                        <td rowSpan="4">シーザリオ</td>
+                        <td rowSpan="8">{sosen.fathersMatherName}</td>
+                        <td rowSpan="4">{sosen.fathersMathersFatherName}</td>
                         <td rowSpan="2">スペシャルウィーク</td>
                         <td>サンデーサイレンス</td>
                     </tr>
@@ -62,7 +62,7 @@ export default function KettouhyouSyousai() {
                     </tr>
 
                     <tr>
-                        <td rowSpan="4">シーザリオ</td>
+                        <td rowSpan="4">{sosen.fathersMathersMatherName}</td>
                         <td rowSpan="2">スペシャルウィーク</td>
                         <td>サンデーサイレンス</td>
                     </tr>
@@ -78,9 +78,9 @@ export default function KettouhyouSyousai() {
                     </tr>
                     {/* 母方 */}
                     <tr>
-                        <td rowSpan="16">エピファネイア</td>
-                        <td rowSpan="8">シンボリクリスエス</td>
-                        <td rowSpan="4">Kris.S</td>
+                        <td rowSpan="16">{sosen.matherName}</td>
+                        <td rowSpan="8">{sosen.mathersFatherName}</td>
+                        <td rowSpan="4">{sosen.mathersFathersFatherName}</td>
                         <td rowSpan="2">A</td>
                         <td>Roberto</td>
                     </tr>
@@ -95,7 +95,7 @@ export default function KettouhyouSyousai() {
                         <td>Sharp Queen</td>
                     </tr>
                     <tr>
-                        <td rowSpan="4">Tee Kay</td>
+                        <td rowSpan="4">{sosen.mathersFathersMatherName}</td>
                         <td rowSpan="2">Tee Kay</td>
                         <td>Tri Argo</td>
                     </tr>
@@ -111,8 +111,8 @@ export default function KettouhyouSyousai() {
                     </tr>
 
                     <tr>
-                        <td rowSpan="8">シーザリオ</td>
-                        <td rowSpan="4">シーザリオ</td>
+                        <td rowSpan="8">{sosen.mathersMatherName}</td>
+                        <td rowSpan="4">{sosen.mathersMathersFatherName}</td>
                         <td rowSpan="2">スペシャルウィーク</td>
                         <td>サンデーサイレンス</td>
                     </tr>
@@ -128,7 +128,7 @@ export default function KettouhyouSyousai() {
                     </tr>
 
                     <tr>
-                        <td rowSpan="4">シーザリオ</td>
+                        <td rowSpan="4">{sosen.mathersMathersMatherName}</td>
                         <td rowSpan="2">スペシャルウィーク</td>
                         <td>サンデーサイレンス</td>
                     </tr>

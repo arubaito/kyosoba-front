@@ -22,7 +22,7 @@ export default function Horse({
         tsusanseiseki,
         syokin,
         raceResultList,
-        ketto,
+        sosen,
     }) {
     return (
         <>
@@ -49,12 +49,11 @@ export default function Horse({
                             banushi={banushi}
                             tsusanseiseki={tsusanseiseki}
                             syokin={syokin}
-                            // ketto={ketto} どう表示するか考えちゅ
                         />
                     </div>
                 </div>
                 <UmaInfoKettou>
-                    <KettouhyouSyousai />
+                    <KettouhyouSyousai sosen={sosen} />
                 </UmaInfoKettou>
                 <UmaInfoTyokkinSeiseki
                     raceResultList={raceResultList}
@@ -85,7 +84,7 @@ export async function getServerSideProps(){
             syokin: response.syokin,
             tsusanseiseki: `${response.tsusanSeiseki.syobusu}戦${response.tsusanSeiseki.syorisu}勝`,
             raceResultList: response.raceResultList,
-            ketto: response.sosen,
+            sosen: response.sosen,
         },
     }
 }
