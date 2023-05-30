@@ -1,0 +1,12 @@
+.table{
+    /* 罫線 */
+    border-collapse: collapse;
+    width: 90%;
+    margin: 0.3em auto;
+    
+}
+
+.table td{
+    border: 1px solid black;
+    background-color: white;
+}
