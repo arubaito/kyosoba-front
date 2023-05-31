@@ -1,0 +1,25 @@
+/* メモ入力欄 */
+.raceMemoArea{
+    width: 90%;
+    /* text-align: center; */
+    padding: 2em 0em;
+    margin: 0em auto;
+    /* ボタン位置の調整 */
+    position: relative;
+}
+
+.raceMemoArea textArea{
+    width: 100%;
+    resize: none;
+    /* 入力文字の設定 */
+    font-family: inherit;
+    font-size: 100%;
+}
+
+.raceMemoArea button{
+    display: block;
+    text-align: right;
+    /* ボタン位置 */
+    position: absolute;
+    right: 1em;
+}

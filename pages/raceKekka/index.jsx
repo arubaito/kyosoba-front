@@ -1,3 +1,4 @@
+import RaceKekkaMemo from "components/K02_RaceKekkaMemo";
 import Syussouhyou from "components/K02_Syussouhyou";
 import { getRaceKekka } from "lib/api";
 import styles from "styles/page/K02_RaceKekka.module.css";
@@ -6,7 +7,7 @@ import styles from "styles/page/K02_RaceKekka.module.css";
     予想画面
     getServerSidePropsでサーバから取得してきた競走馬の情報を表示
  */
-export default function RaceKekkaMemo({raceKekkaList}){
+export default function RaceKekka({raceKekkaList}){
     return (
         <div className={styles.raceContentsBox}>
             <div>
@@ -15,15 +16,7 @@ export default function RaceKekkaMemo({raceKekkaList}){
             </div>
             <Syussouhyou raceKekkaList={raceKekkaList} />
             {/* メモ入力欄 */}
-            <div className={styles.raceMemoArea}>
-                <h3>レースメモ</h3>
-                <textarea 
-                    className={styles.textArea} 
-                    name="memo"
-                    rows="8"
-                />
-                <button>保存</button>
-            </div>
+            <RaceKekkaMemo />
         </div>
     );
 }
