@@ -34,7 +34,7 @@ function RaceKekkaTableBody({raceKekkaList}){
             {raceKekkaList.map(({
                 tyakuzyun, waku, umaban, yosou, bamei, seirei, kisyu, ninki
             }) => (
-                <tr>
+                <tr key={umaban}>
                     <td>{tyakuzyun}</td>
                     <td>{waku}</td>
                     <td>{umaban}</td>
