@@ -1,0 +1,83 @@
+/* 各レースのボックス */
+.raceIchiran{
+    /* ２列のグリッドレイアウト */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+    /* ボックスの背景 */
+    border-radius: 5px;
+    width: 99%;
+    margin: 0 auto;
+    background-color: rgb(245, 244, 241);
+    padding-top: var(--space-xs);
+    padding-bottom: var(--space-lg);
+}
+@media (max-width: 768px) {
+    .raceIchiran{
+        /* 画面幅が小さくなったら１列にする */
+        grid-template-columns: 1fr;
+    }    
+}
+
+/* 各レースのボックスの中身 */
+.raceBox{
+    /* グリッドレイアウト */
+    display: grid;
+    grid-template-columns: 10% 90%;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 
+        "rank raceName"
+        "rank raceInfo"
+        "rank tyakuzyun";
+    align-items: center;
+    gap: 0.3em;
+    /* ボックスの形 */
+    background-color: white;
+    border: 0.5px solid rgb(228, 225, 219);
+    border-radius: 5px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+/* グリッドレイアウトの配置 */
+.raceRank{
+    grid-area: rank;
+}
+.raceName{
+    grid-area: raceName;
+}
+.raceInfo{
+    grid-area: raceInfo;
+}
+.tyakuzyun{
+    grid-area: tyakuzyun;
+}
+
+/* ボックス内の各アイテムの設定 */
+.raceRank{
+    font-size: larger;
+    font-weight: bold;
+    color: white;
+    justify-self: center;
+    border: 1px solid white;
+    padding: 0.5em;
+    border-radius: 5px;
+    background-color: rgb(227, 84, 79);
+}
+.raceName{
+    font-size: 110%;
+    font-weight: bold;
+}
+
+.raceInfo, .tyakuzyun{
+    color: var(--gray-50);
+    font-size: var(--small-heading3);
+    display: flex;
+    gap: 0.5em;
+}
+
+.raceBox > .raceInfo, .raceBox >.tyakuzyun{
+    align-self: end;
+    justify-self: end;
+}

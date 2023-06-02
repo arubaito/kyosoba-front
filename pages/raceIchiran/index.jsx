@@ -1,73 +1,51 @@
 import styles from "styles/page/K03_RaceIchiran.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDungeon } from "@fortawesome/free-solid-svg-icons";
-import { faSun } from "@fortawesome/free-solid-svg-icons";
+import RaceInfoBox from "components/K03_RaceInfoBox";
 
-export default function () {
+
+/**
+ * (K03)レース一覧画面のコンポーネント
+ * 
+ * @param {*} param0 
+ * @returns 
+ */
+export default function ({raceInfoList}) {
     return (
         <div className={styles.raceIchiranContentsBox}>
             <h1 className={styles.titleAndIcon}>
-                <FontAwesomeIcon icon={faDungeon} size="1.5x" />
+                <FontAwesomeIcon icon={faDungeon} size="1x" />
                 <div className={styles.title}>レース一覧</div>
             </h1>
-            <div className={styles.raceIchiran}>
-                {/* 各レースのボックス */}
-                <div className={styles.raceBox}>
-                    <div className={styles.raceRank}>GI</div>
-                    <div className={styles.raceName}>日本ダービー</div>
-                    <div className={styles.raceInfo}>
-                        <div>2023/5/28</div>
-                        <div>2400m</div>
-                        <div>16頭</div>
-                        <div>天気：<FontAwesomeIcon icon={faSun} /></div>
-                        <div>芝：良</div>
-                    </div>
-                    <div className={styles.tyakuzyun}>
-                        <div>1着:タスティエーラ</div>
-                        <div>2着:タスティエーラ</div>
-                        <div>3着:タスティエーラ</div>
-                    </div>
-                </div>
-
-
-
-                <div className={styles.raceBox}>
-                    <div className={styles.raceName}>日本ダービー</div>
-                    <div className={styles.raceInfo}>
-                        <div>2023/5/28</div>
-                        <div>芝</div>
-                        <div>2400m</div>
-                        <div>16着</div>
-                        <div>晴</div>
-                        <div>良</div>
-                    </div>
-                    <div className={styles.tyakuzyun}>
-                        <div>1着:タスティエーラ</div>
-                        <div>2着:タスティエーラ</div>
-                        <div>3着:タスティエーラ</div>
-                    </div>
-                </div>
-                <div className={styles.raceBox}>
-                    <div className={styles.raceName}>日本ダービー</div>
-                    <div className={styles.raceInfo}>
-                        <div>2023/5/28</div>
-                        <div>芝</div>
-                        <div>2400m</div>
-                        <div>16着</div>
-                        <div>晴</div>
-                        <div>良</div>
-                    </div>
-                    <div className={styles.tyakuzyun}>
-                        <div>1着:タスティエーラ</div>
-                        <div>2着:タスティエーラ</div>
-                        <div>3着:タスティエーラ</div>
-                    </div>
-                </div>
-                
-                
-                
-                
-            </div>
+            <RaceInfoBox raceInfoList={raceInfoList} />
         </div>
     );
+}
+
+/* SSG */
+export async function getServerSideProps(){
+
+    console.log("raceIchiran/index.jsx#getServerSideProps");
+
+    // サーバからレース結果の一覧を取得
+    const response = await getRaceIchiran();
+    console.log(response);
+
+    return {
+        props:{
+            raceInfoList:response,
+        },
+    }
+} 
+
+
+// レース結果の一覧をサーバから取得する関数
+async function getRaceIchiran(){
+    try{
+        const response = await fetch("http://localhost:8080/race-kekka-ichiran");
+        const res = await response.json();
+        return res;
+    }catch(err){
+        console.log(err);
+    }
 }
