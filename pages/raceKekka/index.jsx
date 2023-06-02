@@ -1,7 +1,5 @@
 import RaceKekkaMemo from "components/K02_RaceKekkaMemo";
 import Syussouhyou from "components/K02_Syussouhyou";
-import { getRaceKekka } from "lib/api";
-import { useRouter } from "next/router";
 import styles from "styles/page/K02_RaceKekka.module.css";
 
 /*
@@ -44,4 +42,15 @@ export async function getServerSideProps(context){
         },
     }
 
+}
+
+// レース結果の情報をサーバから取得する関数
+async function getRaceKekka(raceZisshiId){
+    try{
+        const response = await fetch(`http://localhost:8080/race-kekka-${raceZisshiId}`);
+        const res = await response.json();
+        return res;
+    }catch(err){
+        console.log(err);
+    }
 }
