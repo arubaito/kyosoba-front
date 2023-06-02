@@ -6,6 +6,7 @@ import { faCloudShowersHeavy } from "@fortawesome/free-solid-svg-icons";
 import { faCloudRain } from "@fortawesome/free-solid-svg-icons";
 import { faSnowman } from "@fortawesome/free-solid-svg-icons";
 import { faSnowflake } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 /**
  * レース一覧画面の各レース情報を表示するコンポーネント
@@ -21,6 +22,7 @@ export default function RaceInfoBox({raceInfoList}){
                         raceZisshiId, raceName, raceGrade, raceDate, kyori, tousu,
                         tenko, baba, tyakuzyun1, tyakuzyun2, tyakuzyun3
                     }) => (
+                        <Link href={{pathname : "/raceKekka", query : {raceZisshiId:raceZisshiId}}}>
                         <div className={styles.raceBox}>
                             <div className={styles.raceRank}>{
                                 raceGrade === 1 ? "GI"
@@ -58,6 +60,7 @@ export default function RaceInfoBox({raceInfoList}){
                                 <div>3着:{tyakuzyun3}</div>
                             </div>
                         </div>
+                        </Link>
                     ))
                 }
             </div>

@@ -7,7 +7,7 @@ export default function Nav(){
         <nav>
             <ul className={styles.list}>
                 <li>
-                    <Link href="/">メニュー１</Link>
+                    <Link href="/raceIchiran">レース結果一覧</Link>
                 </li>
                 <li>
                     <Link href="/">メニュー２</Link>
