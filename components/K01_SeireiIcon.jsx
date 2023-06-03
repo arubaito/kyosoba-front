@@ -1,4 +1,4 @@
-import styles from "styles/utils_components/K01_SeireiIcon.module.css";
+import styles from "styles/page/K01_SeireiIcon.module.css";
 
 /*
     性齢のアイコン

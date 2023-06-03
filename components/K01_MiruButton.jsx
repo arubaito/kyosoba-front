@@ -1,5 +1,5 @@
 import Button from "components/utils/Button";
-import styles from "styles/utils_components/K01_MiruButton.module.css"
+import styles from "styles/page/K01_MiruButton.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 
