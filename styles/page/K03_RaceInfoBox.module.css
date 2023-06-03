@@ -19,6 +19,16 @@
     }    
 }
 
+/* ホバー設定 */
+.raceBox:hover{
+    background-color: rgb(253, 242, 193);
+    cursor: pointer;
+}
+.raceBox:hover .raceName {
+    color:rgb(225, 142, 142);
+    text-decoration: underline;
+}
+
 /* 各レースのボックスの中身 */
 .raceBox{
     /* グリッドレイアウト */
