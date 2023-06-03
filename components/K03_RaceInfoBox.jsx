@@ -21,15 +21,38 @@ export default function RaceInfoBox({raceInfoList}){
                     raceInfoList.map(({
                         raceZisshiId, raceName, raceGrade, raceDate, kyori, tousu,
                         tenko, baba, tyakuzyun1, tyakuzyun2, tyakuzyun3
-                    }) => (
-                        <Link href={{pathname : "/raceKekka", query : {raceZisshiId:raceZisshiId}}}>
+                    }) => {
+                        /* 定数の変換 */
+                        // レースグレード
+                        raceGrade = (
+                            raceGrade === 1 ? "GI"
+                            : raceGrade === 2 ? "GⅡ"
+                            : raceGrade === 3 ? "GⅢ"
+                            : ""
+                        );
+                        // 馬場状態
+                        baba = (
+                            baba ===  1 ? "良"
+                            : baba === 2 ? "稍重"
+                            : baba === 3 ? "重"
+                            : "不良"
+                        );
+
+                        /* 各レースのボックスを生成 */
+                        return (
+                        <Link href={{pathname : "/raceKekka", query : {
+                            // リンク先にqueryパラメータで値を受け渡し
+                            raceZisshiId: raceZisshiId,
+                            raceName: raceName,
+                            raceGrade: raceGrade,
+                            raceDate: raceDate,
+                            kyori: kyori,
+                            tousu: tousu,
+                            tenko: tenko, // 天候はアイコンに変換してるので定数で受け渡しておく
+                            baba: baba,
+                        }}}>
                         <div className={styles.raceBox}>
-                            <div className={styles.raceRank}>{
-                                raceGrade === 1 ? "GI"
-                                : raceGrade === 2 ? "GⅡ"
-                                : raceGrade === 3 ? "GⅢ"
-                                : ""
-                                }</div>
+                            <div className={styles.raceRank}>{raceGrade}</div>
                             <div className={styles.raceName}>{raceName}</div>
                             <div className={styles.raceInfo}>
                                 <div>{raceDate}</div>
@@ -46,12 +69,7 @@ export default function RaceInfoBox({raceInfoList}){
                                     }
                                 </div>
                                 <div>芝：
-                                    {
-                                    baba ===  1 ? "良"
-                                     : baba === 2 ? "稍重"
-                                     : baba === 3 ? "重"
-                                     : "不良"
-                                    }
+                                    {baba}
                                 </div>
                             </div>
                             <div className={styles.tyakuzyun}>
@@ -61,12 +79,9 @@ export default function RaceInfoBox({raceInfoList}){
                             </div>
                         </div>
                         </Link>
-                    ))
+                    )}
+                    )
                 }
-            </div>
-
-
-
-
+        </div>
     );
 }

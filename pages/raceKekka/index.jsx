@@ -6,12 +6,12 @@ import styles from "styles/page/K02_RaceKekka.module.css";
     (K02)レース結果メモ画面
     getServerSidePropsでサーバから取得してきた競走馬の情報を表示
  */
-export default function RaceKekka({raceKekkaList}){
+export default function RaceKekka({raceKekkaList, raceName, raceGrade}){
     return (
         <div className={styles.raceContentsBox}>
             <div>
-                <span>日本ダービー</span>
-                <span> GI</span>
+                <h1>{raceName}</h1>
+                <span>{raceGrade}</span>
             </div>
             <Syussouhyou raceKekkaList={raceKekkaList} />
             {/* メモ入力欄 */}
@@ -38,8 +38,14 @@ export async function getServerSideProps(context){
 
     return {
         props:{
-            raceKekkaList:response.raceKekkaList,
-            // TODO contextからレース名とレースグレードを取得する(Java側も要修正)
+            raceKekkaList: response.raceKekkaList,
+            raceName: context.query.raceName, 
+            raceGrade: context.query.raceGrade,
+            raceDate: context.query.raceDate, 
+            kyori: context.query.kyori,
+            tousu: context.query.tousu, 
+            tenko: context.query.tenko,
+            baba: context.query.baba,
         },
     }
 
