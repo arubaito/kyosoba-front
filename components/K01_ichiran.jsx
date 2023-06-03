@@ -1,7 +1,7 @@
 import Link from "next/link";
-import styles from "styles/ichiran.module.css"
-import MiruButton from "components/utils/MiruButton";
-import SeireiIcon from "components/utils/SeireiIcon";
+import styles from "styles/K01_ichiran.module.css"
+import MiruButton from "components/utils/K01_MiruButton";
+import SeireiIcon from "components/utils/K01_SeireiIcon";
 
 /*
     馬名の一覧を表示するコンポーネント

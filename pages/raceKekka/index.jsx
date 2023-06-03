@@ -39,6 +39,7 @@ export async function getServerSideProps(context){
     return {
         props:{
             raceKekkaList:response.raceKekkaList,
+            // TODO contextからレース名とレースグレードを取得する(Java側も要修正)
         },
     }
 

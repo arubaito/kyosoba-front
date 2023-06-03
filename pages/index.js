@@ -1,5 +1,5 @@
-import Ichiran from "components/ichiran";
-import Kettouhyou from "components/kettouhyou";
+import Ichiran from "components/K01_ichiran";
+import Kettouhyou from "components/K01_kettouhyou";
 import Modal from "components/modal";
 import { useState } from "react";
 

@@ -1,4 +1,4 @@
-import styles from "styles/KettouhyouSyousai.module.css"
+import styles from "styles/K04_KettouhyouSyousai.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVenusMars } from "@fortawesome/free-solid-svg-icons";
 

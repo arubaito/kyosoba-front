@@ -1,15 +1,15 @@
 import Image from 'next/image';
-import styles from 'styles/page/horse.module.css';
+import styles from 'styles/page/K04_horse.module.css';
 import sodashi from 'public/image/sodashi.jpg'; // 画像をimportするとNext.jsは色々便利
 import UmaInfoIconGroup from 'components/utils/UmaInfoIcon/UmaInfoIconGroup';
 import UmaInfoName from 'components/utils/UmaInfoName/UmaInfoName';
 import { getKyosobaInfo } from 'lib/api';
 import UmaInfoKettou from 'components/utils/UmaInfoIcon/Umainfo_kettou';
-import KettouhyouSyousai from 'components/KettouhyouSyousai';
+import KettouhyouSyousai from 'components/K04_KettouhyouSyousai';
 import UmaInfoTyokkinSeiseki from 'components/utils/UmaInfoIcon/Umainfo_TyokkinSeiseki';
 
 /*
-    競走馬詳細情報画面
+    (k04)競走馬詳細情報画面
     getServerSidePropsでサーバから取得してきた競走馬の情報を表示
  */
 export default function Horse({ 
