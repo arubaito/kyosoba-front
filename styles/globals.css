@@ -7,6 +7,16 @@
   --gray-75: #444444;
   --black: #222222;
   --accent: #0d87e0;
+  --waku2: #686868;
+  --waku3: #E95556;
+  --waku4: #416CBA;
+  --waku5: #E7C52C;
+  --waku6: #45AF4C;
+  --waku7: #EE9738;
+  --waku8: #EF8FA0;
+  --table-header-background: #F4F2EC;
+  --table-header-border: #c7c3bb;
+  --table-header-color: #37424E;
 
   /* 文字サイズ */
   --body: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);           /* 16-18px */

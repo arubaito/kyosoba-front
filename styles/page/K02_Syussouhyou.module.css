@@ -1,3 +1,4 @@
+/* テーブル全体のスタイル */
 .table{
     /* 罫線 */
     border-collapse: collapse;
@@ -6,7 +7,49 @@
     
 }
 
+.table thead{
+    background: var(--table-header-background);
+    color: var(--table-header-color);
+    text-align: center;
+    font-weight: 700;
+}
+
 .table td{
-    border: 1px solid black;
-    background-color: white;
+    border: 1px solid var(--table-header-border);
+    padding: 0.2em;
+}
+
+/* 表の数字をセンタリング */
+.table .tyakuzyun, .table .waku, .table .umaban, .table .yosou, .table .ninki{
+    text-align: center;
+}
+/* 枠ごとの色 */
+.waku2{
+    background: var(--waku2);
+    color: white;
+
+}
+.waku3{
+    background: var(--waku3);
+    color: white;
+}
+.waku4{
+    background: var(--waku4);
+    color: white;
+}
+.waku5{
+    background: var(--waku5);
+    color: white;
+}
+.waku6{
+    background: var(--waku6);
+    color: white;
+}
+.waku7{
+    background: var(--waku7);
+    color: white;
+}
+.waku8{
+    background: var(--waku8);
+    color: white;
 }
