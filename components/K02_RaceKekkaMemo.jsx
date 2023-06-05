@@ -6,11 +6,10 @@ import styles from "styles/page/K02_RaceKekkaMemo.module.css";
  * 
  * 入力フォームの参考⇒https://reffect.co.jp/react/react-hook-form 
  */
-export default function RaceKekkaMemo(){
+export default function RaceKekkaMemo({raceZisshiId}){
   
     // useStateを使って入力フォームを管理
     const [raceKekkaMemo, setRaceKekkaMemo] = useState(""); // 初期値 
-    const raceZisshiId = 1; // POST送信するレースを識別するID
 
     // 入力欄が更新されたらstate値を更新
     const handleChangeRaceKekkaMemo = (e) => {

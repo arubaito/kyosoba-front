@@ -14,7 +14,7 @@ import { faSnowflake } from "@fortawesome/free-solid-svg-icons";
     getServerSidePropsでサーバから取得してきた競走馬の情報を表示
  */
 export default function RaceKekka({
-    raceKekkaList, raceName, raceGrade, raceDate, kyori, tousu, tenko, baba
+    raceKekkaList, raceZisshiId, raceName, raceGrade, raceDate, kyori, tousu, tenko, baba
 }){
     return (
         <div className={styles.raceContentsBox}>
@@ -39,7 +39,7 @@ export default function RaceKekka({
             </div>
             <Syussouhyou raceKekkaList={raceKekkaList} />
             {/* メモ入力欄 */}
-            <RaceKekkaMemo />
+            <RaceKekkaMemo raceZisshiId={raceZisshiId}/>
         </div>
     );
 }
@@ -63,6 +63,7 @@ export async function getServerSideProps(context){
     return {
         props:{
             raceKekkaList: response.raceKekkaList,
+            raceZisshiId: context.query.raceZisshiId,
             raceName: context.query.raceName, 
             raceGrade: context.query.raceGrade,
             raceDate: context.query.raceDate, 
