@@ -37,7 +37,7 @@ export default function RaceKekka({
                     <span className={styles.baba}> / 馬場:{baba}</span>
                 </div>
             </div>
-            <Syussouhyou raceKekkaList={raceKekkaList} />
+            <Syussouhyou raceKekkaList={raceKekkaList} raceZisshiId={raceZisshiId} />
             {/* メモ入力欄 */}
             <RaceKekkaMemo raceZisshiId={raceZisshiId}/>
         </div>
@@ -58,7 +58,6 @@ export async function getServerSideProps(context){
     // サーバからレース結果の競走馬一覧を取得
     const response = await getRaceKekka(context.query.raceZisshiId);
     console.log(response);
-    // サーバからレース結果のメモを取得
 
     return {
         props:{

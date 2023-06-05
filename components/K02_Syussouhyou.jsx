@@ -7,7 +7,7 @@ import { BsFillTriangleFill } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
 import { AiOutlineStar } from "react-icons/ai";
 
-export default function Syussouhyou({raceKekkaList}){
+export default function Syussouhyou({raceKekkaList, raceZisshiId}){
     return (
         <table className={styles.table}>
             {/* テーブルのヘッダ */}
@@ -23,7 +23,7 @@ export default function Syussouhyou({raceKekkaList}){
                     <td>人気</td>
                 </tr>
             </thead>
-            <RaceKekkaTableBody raceKekkaList={raceKekkaList} />
+            <RaceKekkaTableBody raceKekkaList={raceKekkaList} raceZisshiId={raceZisshiId} />
         </table>
     );
 }
@@ -31,41 +31,42 @@ export default function Syussouhyou({raceKekkaList}){
 // 予想セレクトボックスの選択肢(react-selectで使う)
 const options = [
     {
-        value: "未選択",
+        value: 7,
         label:"--",
     },
     {
-        value: "本命",
+        value: 1,
         label:<GrEmptyCircle />,
     },
     {
-        value: "対抗",
+        value: 2,
         label:<FiCircle />,
     },
     {
-        value: "単穴",
+        value: 3,
         label:<BsFillTriangleFill />,
     },
     {
-        value: "連下",
+        value: 4,
         label:<FiTriangle />,
     },
     {
-        value: "バツ",
+        value: 5,
         label:<RxCross1 />,
     },
     {
-        value: "穴馬",
+        value: 6,
         label:<AiOutlineStar />,
     },
 ];
 
 /**
+ * レース結果の各競走馬のテーブルデータを表示するコンポーネント
  * 
  * @param APIから送られてくるレースに出走した馬とその結果のリスト 
  * @returns <tr>でマークアップされた各要素
  */
-function RaceKekkaTableBody({raceKekkaList}){
+function RaceKekkaTableBody({raceKekkaList, raceZisshiId}){
     const [selectedValue, setSelectedValue] = useState(options[0]);
     
     return (
@@ -97,7 +98,8 @@ function RaceKekkaTableBody({raceKekkaList}){
                                 defaultValue={selectedValue}
                                 onChange={(value) => {
                                     console.log(value);
-                                    value ? setSelectedValue(value) : null;
+                                    console.log(umaban);
+                                    value ? updateRaceYosou(raceZisshiId, 32, value.value) : null;
                                 }}
                             />
                         </td>
@@ -110,4 +112,36 @@ function RaceKekkaTableBody({raceKekkaList}){
         })}
         </tbody>
     );
+}
+
+/**
+ * レース予想のセレクトボックスを更新した際にDBの値を更新
+ * 
+ * @param {*} raceZisshiId 
+ * @param {*} kyosobaId 
+ * @param {*} yosou 
+ */
+async function updateRaceYosou(raceZisshiId, kyosobaId = 32, yosou){
+    
+    console.log("K02_Syussouhyou.jsx#updateRaceYosou");
+    console.log(raceZisshiId)
+    
+    const response = await fetch("http://localhost:8080/update-race-yosou", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            raceZisshiId, 
+            kyosobaId,
+            yosou,
+        }),
+    })
+
+    // デバッグ用
+    if(response.status === 200){
+        alert("保存しました。");
+    } else {
+        alert("保存できませんでした。管理者にご連絡ください。");
+    }
 }
