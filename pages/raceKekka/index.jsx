@@ -72,7 +72,6 @@ export async function getServerSideProps(context){
             baba: context.query.baba,
         },
     }
-
 }
 
 // レース結果の情報をサーバから取得する関数

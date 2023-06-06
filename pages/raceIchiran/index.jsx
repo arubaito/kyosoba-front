@@ -1,8 +1,7 @@
 import styles from "styles/page/K03_RaceIchiran.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDungeon } from "@fortawesome/free-solid-svg-icons";
 import RaceInfoBox from "components/K03_RaceInfoBox";
-
+import TitleAndIcon from "components/common/titleAndIcon";
+import { GiHorseshoe } from "react-icons/gi"
 
 /**
  * (K03)レース一覧画面のコンポーネント
@@ -13,10 +12,12 @@ import RaceInfoBox from "components/K03_RaceInfoBox";
 export default function ({raceInfoList}) {
     return (
         <div className={styles.raceIchiranContentsBox}>
-            <h1 className={styles.titleAndIcon}>
-                <FontAwesomeIcon icon={faDungeon} size="1x" />
-                <div className={styles.title}>レース一覧</div>
-            </h1>
+            {/* タイトル */}
+            <TitleAndIcon title="レース一覧">
+                <GiHorseshoe />
+            </TitleAndIcon>
+
+            {/* メインコンテンツ */}
             <RaceInfoBox raceInfoList={raceInfoList} />
         </div>
     );

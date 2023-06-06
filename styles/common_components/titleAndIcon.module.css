@@ -1,0 +1,30 @@
+/* 見出し下の横線 */
+.titleAndIcon{
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.titleAndIcon::before{
+    position: absolute;
+    bottom: 0;
+    content: '';
+    width: 90%;
+    border-bottom: 3px solid #f6ba33;
+}
+
+/* 見出しとアイコンの表示 */
+.titleAndIcon{
+    color:black;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-left: 1em;
+    margin-bottom: 0.2em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+}
+/* 見出しのフォント */
+.title{
+    font-size: 70%;
+    align-self: flex-end;
+}
