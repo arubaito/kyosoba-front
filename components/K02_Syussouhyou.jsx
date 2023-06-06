@@ -67,7 +67,6 @@ const options = [
  * @returns <tr>でマークアップされた各要素
  */
 function RaceKekkaTableBody({raceKekkaList, raceZisshiId}){
-    const [selectedValue, setSelectedValue] = useState(options[0]);
     
     return (
         <tbody>
@@ -75,6 +74,11 @@ function RaceKekkaTableBody({raceKekkaList, raceZisshiId}){
             {raceKekkaList.map(({
                 tyakuzyun, waku, umaban, yosou, bamei, seirei, kisyu, ninki, kyosobaId
             }) => {
+
+                // 予想の値は前回選択した値で初期化
+                const [selectedValue, setSelectedValue] = useState(options[yosou]);
+
+                // コンポーネントの返却
                 return(
                     <tr key={umaban}>
                         <td className={styles.tyakuzyun}>{tyakuzyun}</td>
@@ -97,8 +101,6 @@ function RaceKekkaTableBody({raceKekkaList, raceZisshiId}){
                                 options={options}
                                 defaultValue={selectedValue}
                                 onChange={(value) => {
-                                    console.log(value);
-                                    console.log(umaban);
                                     value ? updateRaceYosou(raceZisshiId, kyosobaId, value.value) : null;
                                 }}
                             />
@@ -124,7 +126,6 @@ function RaceKekkaTableBody({raceKekkaList, raceZisshiId}){
 async function updateRaceYosou(raceZisshiId, kyosobaId, yosou){
     
     console.log("K02_Syussouhyou.jsx#updateRaceYosou");
-    console.log(kyosobaId)
     
     const response = await fetch("http://localhost:8080/update-race-yosou", {
         method: "POST",
@@ -137,11 +138,4 @@ async function updateRaceYosou(raceZisshiId, kyosobaId, yosou){
             yosou,
         }),
     })
-
-    // デバッグ用
-    if(response.status === 200){
-        alert("保存しました。");
-    } else {
-        alert("保存できませんでした。管理者にご連絡ください。");
-    }
 }
