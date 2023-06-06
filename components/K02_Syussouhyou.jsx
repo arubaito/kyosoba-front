@@ -73,7 +73,7 @@ function RaceKekkaTableBody({raceKekkaList, raceZisshiId}){
         <tbody>
             {/* 各レコードを生成 */}
             {raceKekkaList.map(({
-                tyakuzyun, waku, umaban, yosou, bamei, seirei, kisyu, ninki
+                tyakuzyun, waku, umaban, yosou, bamei, seirei, kisyu, ninki, kyosobaId
             }) => {
                 return(
                     <tr key={umaban}>
@@ -99,7 +99,7 @@ function RaceKekkaTableBody({raceKekkaList, raceZisshiId}){
                                 onChange={(value) => {
                                     console.log(value);
                                     console.log(umaban);
-                                    value ? updateRaceYosou(raceZisshiId, 32, value.value) : null;
+                                    value ? updateRaceYosou(raceZisshiId, kyosobaId, value.value) : null;
                                 }}
                             />
                         </td>
@@ -121,10 +121,10 @@ function RaceKekkaTableBody({raceKekkaList, raceZisshiId}){
  * @param {*} kyosobaId 
  * @param {*} yosou 
  */
-async function updateRaceYosou(raceZisshiId, kyosobaId = 32, yosou){
+async function updateRaceYosou(raceZisshiId, kyosobaId, yosou){
     
     console.log("K02_Syussouhyou.jsx#updateRaceYosou");
-    console.log(raceZisshiId)
+    console.log(kyosobaId)
     
     const response = await fetch("http://localhost:8080/update-race-yosou", {
         method: "POST",
