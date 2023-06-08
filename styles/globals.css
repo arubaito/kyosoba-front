@@ -17,6 +17,7 @@
   --table-header-background: #F4F2EC;
   --table-header-border: #c7c3bb;
   --table-header-color: #37424E;
+  --hover-text-color: rgb(225, 142, 142);
 
   /* 文字サイズ */
   --body: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);           /* 16-18px */

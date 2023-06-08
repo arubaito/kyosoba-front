@@ -1,0 +1,21 @@
+/* メインコンテンツ */
+.kanriContentsBox{
+    background-color: white;
+}
+
+.menuContentsBox{
+    text-align: center;
+    padding: 1em;
+}
+
+.menuContents{
+    display: block;
+    padding: 1em 0;
+    font-size: 150%;
+}
+
+.menuContents:hover{
+    text-decoration-line: underline;
+    color: var(--hover-text-color);
+}
+

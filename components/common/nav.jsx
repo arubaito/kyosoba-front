@@ -13,7 +13,7 @@ export default function Nav(){
                     <Link href="/">メニュー２</Link>
                 </li>
                 <li>
-                    <Link href="/">メニュー３</Link>
+                    <Link href="/kanri">管理メニュー</Link>
                 </li>
             </ul>
         </nav>
