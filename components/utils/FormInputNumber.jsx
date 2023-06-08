@@ -4,23 +4,23 @@ import styles from "styles/utils/FormInputText.module.css";
 
 /**
  * インプットフォームを構築する汎用コンポーネント
+ * 
  * @param {boolean} required: 必須マークを付けるかどうか 
  * @param {string} labelName: ラベル名 
  * @param {string} formName: フォームのID 
  * @returns JSXコンポーネント
  */
-export default function FormInputText({ required = false, labelName, formName }) {
+export default function FormInputNumber({ required = false, labelName, formName }) {
 
-    // FormProviderタグで囲まれると、useFormの機能をまとめて渡してuseFormContextで使う事ができる
     const {register, formState} = useFormContext();
 
-    // TODO エラーメッセージで参照してるプロパティが汎用的じゃない
     return (
         <FormParts required={required} labelName={labelName}>
-            <div className={styles.formItemInput}>
+            <label className={styles.formItemInput}>
+                {/* numberのインプットフォーム */}
                 <input
                     id={formName}
-                    type="text"
+                    type="number"
                     {...register(formName, {
                         required: '必須項目'
                     })}
@@ -28,7 +28,7 @@ export default function FormInputText({ required = false, labelName, formName })
                 {/* エラーメッセージ(validation) */}
                 {!!formState.errors.raceName && required && 
                     <p>{formState.errors.raceName.message}</p>}
-            </div>
+            </label>
         </FormParts>
 
     );

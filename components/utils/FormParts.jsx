@@ -1,10 +1,12 @@
 import styles from "styles/utils/FormParts.module.css";
-import { Form, FormProvider, useForm } from "react-hook-form";
 
 /**
- * インプットフォームを構築する汎用コンポーネント
- * @param {*} param0 
- * @returns 
+ * フォームの枠組み
+ * 
+ * @param {boolean} required: 必須マークを付けるかどうか 
+ * @param {string} labelName: ラベル名 
+ * @param {string} formName: フォームのID
+ * @returns JSXコンポーネント
  */
 export default function FormParts({ required = false, labelName, formName, children }) {
 
@@ -13,16 +15,12 @@ export default function FormParts({ required = false, labelName, formName, child
             {/* ラベル */}
             <p className={styles.formItemLabel}>
                 {/* 必須マーク */}
-                {
-                    required &&
-                    <span className={styles.formItemLabelRequired}>必須</span>
-                }
+                {required &&
+                    <span className={styles.formItemLabelRequired}>必須</span>}
                 <label htmlFor={formName}>{labelName}</label>
             </p>
-                {/* 入力フォーム */}
-            <div className={styles.formItemInput}>
-                {children}
-            </div>
+            {/* フォーム部品をchildrenで受け取る */}
+            {children}
         </div>
     );
 

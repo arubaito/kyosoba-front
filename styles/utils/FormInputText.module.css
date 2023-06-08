@@ -1,0 +1,21 @@
+/* インプットテキストボックス */
+.formItemInput input {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    height: 48px;
+    flex: 1;
+    width: 100%;
+    max-width: 410px;
+    background: #eaedf2;
+    font-size: 18px;
+    padding: .4em 3.6em .4em .8em;
+}
+@media screen and (max-width: 768px) {
+    .formItemInput input {
+      margin-left: 0;
+      margin-top: 18px;
+      height: 40px;
+      flex: inherit;
+      font-size: 15px;
+    }
+}
