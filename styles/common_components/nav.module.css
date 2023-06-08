@@ -8,7 +8,8 @@
 @media(hover:hover){
     /* マウスホバー時に協調 */
     .list :hover{
-        color: aqua;
+        color: var(--hover-text-color);
+        cursor: pointer;
     }
 }
 
@@ -17,9 +18,28 @@
     .list{
         -webkit-tap-highlight-color: transparent;
     }
-
     .list :active{
-        color:aqua;
+        color: var(--hover-text-color);
+        cursor: pointer;
     }
+}
+
+/* 各メニューアイテム */
+.list li {
+    /* フレキシブルボックスでアイコンとテキストを縦並びに表示 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+/* テキスト */
+.navText{
+    font-size: x-small;
+}
+
+/* アイコン */
+.list svg {
+    font-size: xx-large;
 }
 
