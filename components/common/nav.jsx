@@ -10,15 +10,19 @@ export default function Nav(){
         <nav>
             <ul className={styles.list}>
                 <li>
-                    <GiHorseshoe />
-                    <Link href="/raceIchiran" className={styles.navText}>レース一覧</Link>
+                    <Link href="/raceIchiran">
+                        <GiHorseshoe />
+                        <div className={styles.navText}>レース一覧</div>
+                    </Link>
                 </li>
                 <li>
                     <Link href="/">メニュー２</Link>
                 </li>
                 <li>
-                    <FontAwesomeIcon icon={faGear} />
-                    <Link href="/kanri" className={styles.navText}>管理メニュー</Link>
+                    <Link href="/kanri">
+                        <FontAwesomeIcon icon={faGear} />
+                        <div className={styles.navText}>管理メニュー</div>
+                    </Link>
                 </li>
             </ul>
         </nav>
