@@ -7,12 +7,11 @@ import styles from "styles/common_components/header.module.css";
 export default function Header(){
     return (
         <header>
-            <Container>
-                <div className={styles.flexContainer}>
-                    <Logo boxOn/>
-                    <Nav />
-                </div>
-            </Container>
+            <div className={styles.flexContainer}>
+                <Logo boxOn/>
+                検索ボックス
+                <Nav />
+            </div>
         </header>
     );
 }

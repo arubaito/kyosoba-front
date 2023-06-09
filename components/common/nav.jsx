@@ -2,23 +2,26 @@ import Link from "next/link";
 import styles from "styles/common_components/nav.module.css";
 import { GiHorseshoe } from "react-icons/gi"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGear } from "@fortawesome/free-solid-svg-icons"; 
+import { faGear, faHorse } from "@fortawesome/free-solid-svg-icons"; 
 
 /* ナビゲーションメニューを表示するコンポーネント */
 export default function Nav(){
     return(
         <nav>
             <ul className={styles.list}>
-                <li>
+                <li className={styles.race}>
                     <Link href="/raceIchiran">
                         <GiHorseshoe />
-                        <div className={styles.navText}>レース一覧</div>
+                        <div className={styles.navText}>レース</div>
                     </Link>
                 </li>
-                <li>
-                    <Link href="/">メニュー２</Link>
+                <li className={styles.kyosoba}>
+                    <Link href="/">
+                        <FontAwesomeIcon icon={faHorse} />
+                    <div className={styles.navText}>競走馬</div>
+                    </Link>
                 </li>
-                <li>
+                <li className={styles.kanri}>
                     <Link href="/kanri">
                         <FontAwesomeIcon icon={faGear} />
                         <div className={styles.navText}>管理メニュー</div>

@@ -1,7 +1,6 @@
 /* 横並びに配置 */
 .list{
     display: flex;
-    gap: 2em;
 }
 
 /* ホバーできる環境に対して適用 */
@@ -30,16 +29,34 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-items: center;
+    row-gap: 3px;
 }
 
 /* テキスト */
 .navText{
-    font-size: x-small;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 /* アイコン */
 .list svg {
-    font-size: xx-large;
+    font-size: 40px;
+}
+
+/* メニューアイテムの箱 */
+.list li{
+    padding: 15px;
+    height: 80px;
+    width: 100px;
+    color: white;
+}
+.list .race{
+    background-color: #ef7e17;
+}
+.list .kyosoba{
+    background-color: #76BACC;
+}
+.list .kanri{
+    background-color: #FFD43B;
 }
 

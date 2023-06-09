@@ -11,7 +11,6 @@ export default function Footer(){
             <Container>
                 <div className={styles.flexContainer}>
                     <Logo />
-                    なんか
                 </div>
             </Container>
         </footer>

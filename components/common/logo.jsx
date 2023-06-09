@@ -3,7 +3,7 @@ import styles from "styles/common_components/logo.module.css"
 
 /* 
     ロゴのコンポーネント
-    boxOn : ロゴの見た目をボックススタイルかただのロゴにするか切り替え
+    boxOn : ロゴの見た目を切り替える
 */
 export default function Logo({boxOn=false}){
     return(
@@ -11,7 +11,9 @@ export default function Logo({boxOn=false}){
             href="/"
             className={boxOn ? styles.box : styles.basic}
         >
-            (仮)競走馬
+            <div className={boxOn ? styles.logoTitleBox : styles.logoTitleBasic}>
+                競馬予想アプリ
+            </div>
         </Link>
     );
 }
