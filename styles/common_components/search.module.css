@@ -1,0 +1,32 @@
+/* 検索窓 */
+.searchBox{
+    box-sizing: border-box;
+    position: relative;
+    border: 1px solid #999;
+    padding: 3px 10px;
+    height: 2.3em;
+    width: 265px;
+    overflow: hidden;
+}
+
+.searchBox input[type="text"]{
+  border: none;
+  height: 2.0em;
+}
+.searchBox input[type="text"]:focus {
+  outline: 0;
+}
+
+/* 検索アイコン */
+.searchBox button[type="submit"]{
+  cursor: pointer;
+  border: none;
+  background: #61C1BE;
+  color: #fff;
+  position: absolute;
+  width: 3.5em;
+  height: 3.0em;
+  right:0px;
+  top: 0px;
+  outline : none;
+}

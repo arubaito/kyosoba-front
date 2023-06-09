@@ -1,3 +1,15 @@
 .flexContainer{
     composes:spaceBetween from 'styles/utils/utils.module.css';
 }
+
+.searchBox{
+    padding-left: 200px;
+    padding-right: 5px;
+}
+
+/* 検索ボックスがあると画面表示が崩れるしとりあえず消す */
+@media screen and (max-width: 1000px) {
+    .searchBox{
+        display: none;
+    }
+}
