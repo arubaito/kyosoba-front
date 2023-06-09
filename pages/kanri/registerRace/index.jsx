@@ -9,6 +9,7 @@ import FormInputText from "components/utils/FormInputText";
 import FormInputNumber from "components/utils/FormInputNumber";
 import FormSelect from "components/utils/FormSelect";
 import FormRadio from "components/utils/FormRadio";
+import FormButton from "components/utils/FormButton";
 
 
 /**
@@ -80,40 +81,25 @@ function RegisterForm(){
     return (
         <wrapper>
           <form onSubmit={handleSubmit(handleOnSubmit, handleOnError)} className={styles.form} >
-
-            {/* レース名 */}
             <FormProvider register={register} formState={formState}>
+                {/* レース名 */}
                 <FormInputText required="true" labelName="レース名" formName="raceName"/>
-            </FormProvider>
 
-            {/* グレード */}
-            <FormProvider register={register}>
+                {/* グレード */}
                 <FormSelect labelName="グレード" formName="grade" optionsList={optionsGradeList} />
-            </FormProvider>
 
-            {/* 開催場所 */}
-            <FormProvider register={register}>
+                {/* 開催場所 */}
                 <FormSelect labelName="開催場所" formName="place" optionsList={optionsPlaceList} />
-            </FormProvider>
 
-            {/* 周り方向 */}
-            <FormProvider required="true" register={register} formState={formState}>
+                {/* 周り方向 */}
                 <FormRadio labelName="周り方向" formName="mawari" radioItemsList={radioItemsList} />
-            </FormProvider>
 
-            {/* 距離 */}
-            <FormProvider register={register} formState={formState}>
+                {/* 距離 */}
                 <FormInputNumber required="true" labelName="距離" formName="kyori"/>
-            </FormProvider>
 
-            {/* 送信ボタン */}
-            <button 
-                className={styles.formButton}
-                type="submit"
-                onClick={handleSubmit(handleOnSubmit, handleOnError)}
-                disabled={!formState.isDirty || formState.isSubmitting}>
-                登録
-             </button>
+                {/* 登録ボタン */}
+                <FormButton buttonName="登録" />
+            </FormProvider>
           </form>
         </wrapper>
     )
