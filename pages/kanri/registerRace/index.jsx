@@ -44,8 +44,8 @@ function RegisterForm(){
         }
     })
     // 登録ボタンのハンドラ
-    const handleOnSubmit = (values) => {
-        console.log(values)
+    const handleOnSubmit = async (values) => {
+        await registerRaceMaster(values)
     }
     // エラー時のハンドラ
     const handleOnError = (errors) => {
@@ -103,4 +103,35 @@ function RegisterForm(){
           </form>
         </wrapper>
     )
+}
+
+/**
+ * レースマスタに入力した内容を登録する関数
+ * 
+ * @param {Type:{grade, kyori, mawari, place, raceName}}: 登録データ 
+ */
+async function registerRaceMaster({raceName, grade, place, mawari, kyori}){
+
+    console.log("#registerRaceMaster");
+
+    // API呼び出し
+    const response = await fetch("http://localhost:8080/register-race-master",{
+        method: "POST", 
+        headers:{
+            "Content-Type": "application/json",
+        }, 
+        body: JSON.stringify({
+            raceName,
+            grade, 
+            place,
+            mawari, 
+            kyori, 
+        }),
+    });
+
+    if(response.status === 200){
+        alert("保存しました。");
+    } else {
+        alert("保存できませんでした。管理者にご連絡ください。");
+    }
 }
