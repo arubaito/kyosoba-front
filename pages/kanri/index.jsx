@@ -17,9 +17,9 @@ export default function K05_Kanri(){
             <div className={styles.menuContentsBox}>
                 <Link 
                     className={styles.menuContents} 
-                    href="kanri/registerRace"
+                    href="kanri/registerRaceKaisai"
                 >
-                    <div>レース登録</div>
+                    <div>開催レース登録</div>
                 </Link>
                 <Link 
                     className={styles.menuContents} 
@@ -27,11 +27,24 @@ export default function K05_Kanri(){
                 >
                     <div>レース結果登録</div>
                 </Link>
+                {/* マスタ系 表示非表示を切り替えるようにしたい */}
                 <Link 
                     className={styles.menuContents} 
                     href="kanri/registerRace"
                 >
-                    <div>競走馬登録</div>
+                    <div>競走馬マスタ登録</div>
+                </Link>
+                <Link 
+                    className={styles.menuContents} 
+                    href="kanri/registerRace"
+                >
+                    <div>騎手マスタ登録</div>
+                </Link>
+                <Link 
+                    className={styles.menuContents} 
+                    href="kanri/registerRace"
+                >
+                    <div>レースマスタ登録</div>
                 </Link>
             </div>
         </div>
