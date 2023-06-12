@@ -9,7 +9,7 @@ import styles from "styles/utils/FormInputText.module.css";
  * @param {string} formName: フォームのID 
  * @returns JSXコンポーネント
  */
-export default function FormInputText({ required = false, labelName, formName }) {
+export default function FormInputText({ required = false, labelName, formName, defaultValue }) {
 
     // FormProviderタグで囲まれると、useFormの機能をまとめて渡してuseFormContextで使う事ができる
     const {register, formState} = useFormContext();
@@ -21,6 +21,7 @@ export default function FormInputText({ required = false, labelName, formName })
                 <input
                     id={formName}
                     type="text"
+                    value={defaultValue}
                     {...register(formName, {
                         required: '必須項目'
                     })}
