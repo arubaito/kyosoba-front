@@ -23,20 +23,20 @@ export default function K05_Kanri(){
                 </Link>
                 <Link 
                     className={styles.menuContents} 
-                    href="kanri/registerRace"
+                    href="kanri/registerRaceResult"
                 >
                     <div>レース結果登録</div>
                 </Link>
                 {/* マスタ系 表示非表示を切り替えるようにしたい */}
                 <Link 
                     className={styles.menuContents} 
-                    href="kanri/registerRace"
+                    href="kanri/registerKyosobaMaster"
                 >
                     <div>競走馬マスタ登録</div>
                 </Link>
                 <Link 
                     className={styles.menuContents} 
-                    href="kanri/registerRace"
+                    href="kanri/registerJockeyMaster"
                 >
                     <div>騎手マスタ登録</div>
                 </Link>
