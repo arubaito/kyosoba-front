@@ -101,6 +101,10 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
 
     console.log("registerRaceResult#RegisterForm")
 
+    // レース開催日と頭数は動的に変える
+    const [zisshibi, changeDate] = useState("");
+    const [raceTousu, setTousu] = useState(0);
+
     // React Hook Formの設定
     const { register, handleSubmit, formState, control } = useForm({
         mode: 'onSubmit',
@@ -118,8 +122,8 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
     //**** セレクトボックスのリスト ****//
     // レース名
     const optionsRaceList = [];
-    raceZisshiNameList.map(({ raceZisshiId, raceName, kaisaiDate }) => {
-        optionsRaceList.push({ value: { raceZisshiId }, label: `${raceName}`, date: {kaisaiDate} }); // ``で囲まないとエラー
+    raceZisshiNameList.map(({ raceZisshiId, raceName, kaisaiDate, tousu }) => {
+        optionsRaceList.push({ value: { raceZisshiId }, label: `${raceName}`, date: {kaisaiDate}, raceTousu: {tousu} }); // ``で囲まないとエラー
     });
     // 競走馬
     const optionsKyosobaList = [];
@@ -133,23 +137,23 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
     });
 
     /* MAXが頭数になる処理 */
-    const tousu = 17; // TODO API側で頭数を取ってきて、レース名に応じて動的に変更の必要あり
+    // const raceTousu = 17; // TODO API側で頭数を取ってきて、レース名に応じて動的に変更の必要あり
     // 着順のセレクトボックス
     const optionsTyakuzyunList = [];
-    for (var i = 1; i <= tousu; i++) {
+    for (var i = 1; i <= raceTousu; i++) {
         optionsTyakuzyunList.push({ value: { i }, label: `${i}` });
     }
     optionsTyakuzyunList.push({ value: "", label: "--" })
 
     // 人気のセレクトボックス
     const optionsNinkiList = [];
-    for (var i = 1; i <= tousu; i++) {
+    for (var i = 1; i <= raceTousu; i++) {
         optionsNinkiList.push({ value: { i }, label: `${i}` });
     }
 
     // テーブルのレコードの生成
     const recordList = [];
-    for (var i = 1; i <= tousu; i++) {
+    for (var i = 1; i <= raceTousu; i++) {
         recordList.push(
             <tr key={i}>
                 <td>
@@ -218,7 +222,6 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
             </tr>
         )
     }
-    const [zisshibi, changeDate] = useState("実施日");
 
     /* コンポーネントの返却 */
     return (
@@ -241,7 +244,8 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
                                         onChange={(newValue) => {
                                             console.log(newValue);
                                             changeDate(newValue.date.kaisaiDate);
-                                            field.onChange(newValue.value)
+                                            setTousu(newValue.raceTousu.tousu);
+                                            field.onChange(newValue.value);
                                         }}
                                     />}
                             />
