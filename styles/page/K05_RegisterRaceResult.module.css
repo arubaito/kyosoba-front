@@ -14,3 +14,69 @@
       margin-top: 40px;
     }
 }
+
+/* レース名と実施日の表示箇所 */
+.raceNameAndDateContainer{
+  display: grid;
+  grid-column: 80% 20%;
+  grid-row: auto;
+  gap: 1em;
+}
+
+.raceItem{
+  grid-column: 1 / 2 ;
+}
+.dateItem{
+  grid-column: 2 / 3;
+}
+
+
+
+
+/* テーブル */
+.formTable{
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em auto;
+  text-align: center;
+}
+
+.formTable thead{
+  background: var(--table-header-background);
+  color: var(--table-header-color);
+  font-weight: 700;
+}
+
+.formTable td, .formTable th{
+  border: 1px solid var(--table-header-border);
+  padding: 0.4em;
+}
+
+/* 枠のインプットボックスの幅調整 */
+.waku{
+  width: 50px;
+  text-align: center;
+  font-size: large;
+}
+
+/* ボタンの設定 */
+.formButton {
+  border-radius: 6px;
+  margin: 32px auto 0;
+  padding: 20px 0;
+  width: 280px;
+  display: block;
+  letter-spacing: 0.05em;
+  background: #5bc8ac;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+}
+@media screen and (max-width: 768px) {
+  .formButton {
+      margin-top: 24px;
+      padding: 8px 0;
+      width: 160px;
+      font-size: 16px;
+  }
+}

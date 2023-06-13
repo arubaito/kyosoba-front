@@ -3,6 +3,7 @@ import TitleAndIcon from "components/common/titleAndIcon";
 import { BsClipboardCheck } from "react-icons/bs";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import Select from "react-select";
+import { useState } from "react";
 
 /**
  * (K05) レース結果登録画面
@@ -89,9 +90,12 @@ async function getKyosoba() {
 
 
 /**
+ * 登録フォーム本体
  * 
- * @param {array} レース名の 
- * @returns 
+ * @param {array} レース名のリスト
+ * @param {array} 競走馬名のリスト
+ * @param {array} 騎手のリスト 
+ * @returns 登録フォーム本体のコンポーネント
  */
 function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
 
@@ -114,8 +118,8 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
     //**** セレクトボックスのリスト ****//
     // レース名
     const optionsRaceList = [];
-    raceZisshiNameList.map(({ raceZisshiId, raceName }) => {
-        optionsRaceList.push({ value: { raceZisshiId }, label: `${raceName}` }); // ``で囲まないとエラー
+    raceZisshiNameList.map(({ raceZisshiId, raceName, kaisaiDate }) => {
+        optionsRaceList.push({ value: { raceZisshiId }, label: `${raceName}`, date: {kaisaiDate} }); // ``で囲まないとエラー
     });
     // 競走馬
     const optionsKyosobaList = [];
@@ -150,11 +154,11 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
             <tr key={i}>
                 <td>
                     {/* 枠 */}
-                    <input type="number" defaultValue={i} {...register(`result.${i}.waku`)} />
+                    <input className={styles.waku} type="number" defaultValue={i} {...register(`result.${i}.waku`)} />
                 </td>
                 <td>
                     {/* 馬番 */}
-                    {i}
+                    <div className={styles.umaban}>{i}</div>
                     <input type="hidden" value={i} {...register(`result.${i}.umaban`)} />
                 </td>
                 <td>
@@ -164,6 +168,7 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
                         control={control}
                         render={({ field }) =>
                             <Select
+                                className={styles.bamei}
                                 options={optionsKyosobaList}
                                 onChange={(newValue) => field.onChange(newValue.value)}
                             />}
@@ -176,6 +181,7 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
                         control={control}
                         render={({ field }) =>
                             <Select
+                                className={styles.kisyu}
                                 options={optionsJockeyList}
                                 onChange={(newValue) => field.onChange(newValue.value)}
                             />}
@@ -188,7 +194,9 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
                         control={control}
                         render={({ field }) =>
                             <Select
+                                className={styles.tyakuzyun}
                                 options={optionsTyakuzyunList}
+                                defaultValue={{ value: "", label: "--" }}
                                 onChange={(newValue) => field.onChange(newValue.value)}
                             />}
                     />
@@ -200,7 +208,9 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
                         control={control}
                         render={({ field }) =>
                             <Select
+                                className={styles.ninki}
                                 options={optionsNinkiList}
+                                defaultValue={{ value: "", label: "--" }}
                                 onChange={(newValue) => field.onChange(newValue.value)}
                             />}
                     />
@@ -208,49 +218,60 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
             </tr>
         )
     }
+    const [zisshibi, changeDate] = useState("実施日");
 
-
-    // コンポーネントの返却
+    /* コンポーネントの返却 */
     return (
         <>
             <form onSubmit={handleSubmit(handleOnSubmit)} className={styles.form} >
                 <FormProvider register={register} formState={formState}>
+                    <div className={styles.raceNameAndDateContainer}>
+                        <div className={styles.raceItem}>
+                            {/* レース名 */}
+                            <label className={styles.formItemSelect}>
+                                <p>レース名</p>
+                            </label>
+                            {/* React-SelectとRHFを組み合わせる https://goodlife.tech/posts/react-select.html */}
+                            <Controller
+                                name="raceZisshiId"
+                                control={control}
+                                render={({ field }) =>
+                                    <Select
+                                        options={optionsRaceList}
+                                        onChange={(newValue) => {
+                                            console.log(newValue);
+                                            changeDate(newValue.date.kaisaiDate);
+                                            field.onChange(newValue.value)
+                                        }}
+                                    />}
+                            />
+                        </div>
+                        {/* 日付表示 */}
+                        <div className={styles.dateItem}>
+                            <div>開催日</div>
+                            <div>{zisshibi}</div>
+                        </div>
+                    </div>
 
-                    {/* レース名 実施したレースID */}
-                    <label className={styles.formItemSelect}>
-                        <p>レース名</p>
-                    </label>
-                    {/* React-SelectとRHFを組み合わせる https://goodlife.tech/posts/react-select.html */}
-                    <Controller
-                        name="raceZisshiId"
-                        control={control}
-                        render={({ field }) =>
-                            <Select
-                                options={optionsRaceList}
-                                onChange={(newValue) => field.onChange(newValue.value)}
-                            />}
-                    />
-
-                    {/* 日付 ※非活性 */}
-                    <div>日付ボックス</div>
-
-                    {/* １レコードが１頭の馬の結果 */}
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>枠</th>
-                                <th>馬番</th>
-                                <th>馬名</th>
-                                <th>騎手</th>
-                                <th>着順</th>
-                                <th>人気</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {recordList}
-                        </tbody>
-                    </table>
-
+                    {/* レース結果入力欄 */}
+                    <div className={styles.tableContainer}>
+                        <table className={styles.formTable}>
+                            <thead>
+                                <tr>
+                                    <th className={styles.waku}>枠</th>
+                                    <th>馬番</th>
+                                    <th>馬名</th>
+                                    <th>騎手</th>
+                                    <th>着順</th>
+                                    <th>人気</th>
+                                </tr>
+                            </thead>
+                            {/* テーブル本体 */}
+                            <tbody>
+                                {recordList}
+                            </tbody>
+                        </table>
+                    </div>
                     {/* 登録ボタン */}
                     <button className={styles.formButton} type="submit">
                         登録
@@ -259,6 +280,4 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
             </form >
         </>
     )
-
-
 }
