@@ -88,6 +88,33 @@ async function getKyosoba() {
     }
 }
 
+/**
+ * 登録する関数
+ */
+async function registerRaceResult(raceResultList, value){
+    console.log("registerRaceResult");
+    console.log(raceResultList)
+    console.log(value)
+    const raceZisshiId = value.raceZisshiId
+
+    const response = await fetch("http://localhost:8080/register-race-result", {
+        method: "POST", 
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            raceResultList,
+            raceZisshiId,
+        })
+    })
+
+    if(response.status === 200){
+        alert("保存しました。");
+    } else{
+        alert("保存できませんでした。管理者にご連絡ください。");
+    }
+}
+
 
 /**
  * 登録フォーム本体
@@ -101,7 +128,7 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
 
     console.log("registerRaceResult#RegisterForm")
 
-    // レース開催日と頭数は動的に変える
+    // レース開催日と頭数は、レースによって表示を動的に変える
     const [zisshibi, changeDate] = useState("");
     const [raceTousu, setTousu] = useState(0);
 
@@ -114,9 +141,28 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
         }
     })
 
-    // 登録ボタンのハンドラ
-    const handleOnSubmit = (values) => {
+    // POST送信用の配列
+    const submitData = [];
+    /**
+     * 登録ボタンのハンドラで送信するデータを配列に格納
+     */
+    const handleOnSubmit = async (values) => {
         console.log(values);
+        // データの変換処理
+        values.result.map(data => {
+            submitData.push({
+                waku:`${data.waku}`, 
+                umaban: `${data.umaban}`,
+                bamei: `${typeof data.bamei === "undefined" ? 9999 : data.bamei.id}`, 
+                kisyu: `${typeof data.kisyu === "undefined" ? 9999 : data.kisyu.kisyuId}`,
+                tyakuzyun: `${typeof data.tyakuzyun === "undefined" ? 99 : data.tyakuzyun.i}`,
+                ninki: `${typeof data.ninki === "undefined" ? 99 : data.ninki.i}`,
+            })
+        })
+        console.log(submitData);
+
+        // POST送信処理
+        await registerRaceResult(submitData, values.raceZisshiId);
     }
 
     //**** セレクトボックスのリスト ****//
@@ -137,7 +183,6 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
     });
 
     /* MAXが頭数になる処理 */
-    // const raceTousu = 17; // TODO API側で頭数を取ってきて、レース名に応じて動的に変更の必要あり
     // 着順のセレクトボックス
     const optionsTyakuzyunList = [];
     for (var i = 1; i <= raceTousu; i++) {
@@ -157,19 +202,20 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
         recordList.push(
             <tr key={i}>
                 <td>
-                    {/* 枠 */}
-                    <input className={styles.waku} type="number" defaultValue={i} {...register(`result.${i}.waku`)} />
+                    {/* 枠 ※必須 */}
+                    <input className={styles.waku} type="number" defaultValue={i} {...register(`result.${i}.waku`, {required: true})} />
                 </td>
                 <td>
-                    {/* 馬番 */}
+                    {/* 馬番 ※必須 */}
                     <div className={styles.umaban}>{i}</div>
                     <input type="hidden" value={i} {...register(`result.${i}.umaban`)} />
                 </td>
                 <td>
-                    {/* 馬名 */}
+                    {/* 馬名 ※必須 */}
                     <Controller
                         name={`result.${i}.bamei`}
                         control={control}
+                        rules={{required: true}}
                         render={({ field }) =>
                             <Select
                                 className={styles.bamei}
@@ -179,10 +225,11 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
                     />
                 </td>
                 <td>
-                    {/* 騎手名 */}
+                    {/* 騎手名 ※必須 */}
                     <Controller
                         name={`result.${i}.kisyu`}
                         control={control}
+                        rules={{required: true}}
                         render={({ field }) =>
                             <Select
                                 className={styles.kisyu}
@@ -206,10 +253,11 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
                     />
                 </td>
                 <td>
-                    {/* 人気 */}
+                    {/* 人気 ※必須 */}
                     <Controller
                         name={`result.${i}.ninki`}
                         control={control}
+                        rules={{required: true}}
                         render={({ field }) =>
                             <Select
                                 className={styles.ninki}
@@ -238,9 +286,11 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
                             <Controller
                                 name="raceZisshiId"
                                 control={control}
+                                rules={{required: true}}
                                 render={({ field }) =>
                                     <Select
                                         options={optionsRaceList}
+                                        // レース名によって日付とレコード数を変える
                                         onChange={(newValue) => {
                                             console.log(newValue);
                                             changeDate(newValue.date.kaisaiDate);
@@ -256,7 +306,8 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
                             <div>{zisshibi}</div>
                         </div>
                     </div>
-
+                    {/* エラーメッセージ表示箇所 */}
+                    {formState.errors.result && <div className={styles.errorMessage}>必須項目が入力されていません</div>}
                     {/* レース結果入力欄 */}
                     <div className={styles.tableContainer}>
                         <table className={styles.formTable}>

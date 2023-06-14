@@ -33,8 +33,6 @@
 }
 
 
-
-
 /* テーブル */
 .formTable{
   border-collapse: collapse;
@@ -81,4 +79,10 @@
       width: 160px;
       font-size: 16px;
   }
+}
+
+.errorMessage{
+  padding-top: 0.5em;
+  color: tomato;
+  text-decoration-line: underline;
 }
