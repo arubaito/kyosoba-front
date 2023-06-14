@@ -1,5 +1,5 @@
 import FormParts from "./FormParts";
-import styles from "styles/utils/FormSelect.module.css";
+import styles from "styles/utils/FormRadio.module.css";
 import { useFormContext } from "react-hook-form";
 
 /**
@@ -9,34 +9,43 @@ import { useFormContext } from "react-hook-form";
  * @param {string} formName: フォームID 
  * @param {Array<VF>} optionsList: セレクトボックスのoptionを要素に持つリスト 
  */
-export default function FormRadio({required, labelName, formName, radioItemsList}){
+export default function FormRadio({required = false, labelName, formName, radioItemsList}){
     
     // RHFの管理下にするregisterを取得
     const {register, formState} = useFormContext();
     
     return (
-        <FormParts required labelName={labelName}>
+        <FormParts required={required} labelName={labelName}>
             <label className={styles.formItemRadio}>
                 {/* ラジオボタン */}
                 {radioItemsList.map((radioItem) => {
                     const {value, label} = radioItem;
                     return (
                         <label key={label}>
-                            <input 
-                                type="radio"
-                                name={formName}
-                                value={value}
-                                {...register(formName, {
-                                    required: '必須項目'
-                                })}
-                            />
+                            {/* 必須項目かどうかで切り替え */}
+                            {required ? 
+                                <input 
+                                    type="radio"
+                                    name={formName}
+                                    value={value}
+                                    {...register(formName, {
+                                        required: '必須項目です。'
+                                    })}
+                                /> :
+                                <input 
+                                    type="radio"
+                                    name={formName}
+                                    value={value}
+                                    {...register(formName)}
+                                />
+                            }
                             {label}
                         </label>
                     );
                 })}
                 {/* エラーメッセージ(validation) */}
-                {!!formState.errors.mawari && required && 
-                    <p>{formState.errors.mawari.message}</p>}
+                {!!formState.errors[formName] && required && 
+                    <p className={styles.errorMessage}>{formState.errors[formName].message}</p>}
             </label>
         </FormParts>
     );

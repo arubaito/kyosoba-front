@@ -52,3 +52,9 @@
 .formItemSelect select:focus {
     outline: 1px solid #5bc8ac;
 }
+
+
+.errorMessage{
+    padding-top: 0.2em;
+    color: tomato;
+  }

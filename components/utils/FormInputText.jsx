@@ -14,21 +14,29 @@ export default function FormInputText({ required = false, labelName, formName, d
     // FormProviderタグで囲まれると、useFormの機能をまとめて渡してuseFormContextで使う事ができる
     const {register, formState} = useFormContext();
 
-    // TODO エラーメッセージで参照してるプロパティが汎用的じゃない
     return (
         <FormParts required={required} labelName={labelName}>
             <div className={styles.formItemInput}>
-                <input
-                    id={formName}
-                    type="text"
-                    value={defaultValue}
-                    {...register(formName, {
-                        required: '必須項目'
-                    })}
-                />
+                {/* 必須の制約を付けるかどうか切り替え */}
+                {required ? 
+                    <input
+                        id={formName}
+                        type="text"
+                        value={defaultValue}
+                        {...register(formName, {
+                            required: '必須項目です。'
+                        })}
+                        /> : 
+                        <input
+                        id={formName}
+                        type="text"
+                        value={defaultValue}
+                        {...register(formName)}
+                    />
+                }
                 {/* エラーメッセージ(validation) */}
-                {!!formState.errors.raceName && required && 
-                    <p>{formState.errors.raceName.message}</p>}
+                {formState.errors[formName] && required && 
+                    <p className={styles.errorMessage}>{formState.errors[formName].message}</p>}
             </div>
         </FormParts>
 

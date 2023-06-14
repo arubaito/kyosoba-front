@@ -19,3 +19,11 @@
       font-size: 15px;
     }
 }
+
+/* エラーメッセージ */
+.errorMessage{
+  padding-top: 0.2em;
+  color: tomato;
+  font-size: small;
+  font-weight: bold;
+}

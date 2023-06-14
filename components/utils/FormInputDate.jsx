@@ -9,7 +9,7 @@ import styles from "styles/utils/FormInputDate.module.css";
  * @param {string} formName: フォームのID 
  * @returns JSXコンポーネント
  */
-export default function FormInputDate({required = true, labelName, formName }) {
+export default function FormInputDate({required = false, labelName, formName }) {
 
     // FormProviderタグで囲まれると、useFormの機能をまとめて渡してuseFormContextで使う事ができる
     const {register, formState} = useFormContext();
@@ -18,16 +18,24 @@ export default function FormInputDate({required = true, labelName, formName }) {
     return (
         <FormParts required={required} labelName={labelName}>
             <div className={styles.formItemInput}>
-                <input
-                    id={formName}
-                    type="date"
-                    {...register(formName, {
-                        required: '必須項目'
-                    })}
-                />
+                {/* 必須項目かどうかで切り替え */}
+                {required ? 
+                    <input
+                        id={formName}
+                        type="date"
+                        {...register(formName, {
+                            required: '必須項目です。'
+                        })}
+                    /> :
+                    <input
+                        id={formName}
+                        type="date"
+                        {...register(formName)}
+                    /> 
+                }        
                 {/* エラーメッセージ(validation) */}
-                {!!formState.errors.raceName && required && 
-                    <p>{formState.errors.raceName.message}</p>}
+                {!!formState.errors[formName] && required && 
+                    <p className={styles.errorMessage}>{formState.errors[formName].message}</p>}
             </div>
         </FormParts>
 

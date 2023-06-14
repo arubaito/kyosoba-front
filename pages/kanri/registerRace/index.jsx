@@ -83,7 +83,7 @@ function RegisterForm(){
           <form onSubmit={handleSubmit(handleOnSubmit, handleOnError)} className={styles.form} >
             <FormProvider register={register} formState={formState}>
                 {/* レース名 */}
-                <FormInputText required="true" labelName="レース名" formName="raceName"/>
+                <FormInputText required={true} labelName="レース名" formName="raceName"/>
 
                 {/* グレード */}
                 <FormSelect labelName="グレード" formName="grade" optionsList={optionsGradeList} />
@@ -92,10 +92,10 @@ function RegisterForm(){
                 <FormSelect labelName="開催場所" formName="place" optionsList={optionsPlaceList} />
 
                 {/* 周り方向 */}
-                <FormRadio labelName="周り方向" formName="mawari" radioItemsList={radioItemsList} />
+                <FormRadio required={true} labelName="周り方向" formName="mawari" radioItemsList={radioItemsList} />
 
                 {/* 距離 */}
-                <FormInputNumber required="true" labelName="距離" formName="kyori"/>
+                <FormInputNumber required={true} labelName="距離" formName="kyori"/>
 
                 {/* 登録ボタン */}
                 <FormButton buttonName="登録" />
