@@ -32,11 +32,11 @@ export default function RegisterKyosobaMaster() {
 function RegisterForm() {
 
     // 登録フォームの設定
-    const { register, handleSubmit, formState } = useForm({
+    const { register, handleSubmit, formState, reset } = useForm({
         mode: 'onSubmit',
         reValidateMode: 'onChange',
         defaultValues: {
-            // raceName: '',
+            birthday: '2018-01-01',
         }
     })
 
@@ -47,17 +47,18 @@ function RegisterForm() {
     ];
     // 毛色
     const optionsKeiroList = [
-        <option value="" key={1}>栗毛</option>,
-        <option value="" key={2}>鹿毛</option>,
-        <option value="" key={3}>芦毛</option>,
-        <option value="" key={4}>黒鹿毛</option>,
-        <option value="" key={5}>白毛</option>,
+        <option value="栗毛" key={1}>栗毛</option>,
+        <option value="鹿毛" key={2}>鹿毛</option>,
+        <option value="芦毛" key={3}>芦毛</option>,
+        <option value="黒鹿毛" key={4}>黒鹿毛</option>,
+        <option value="白毛" key={5}>白毛</option>,
+        <option value="青鹿毛" key={6}>青鹿毛</option>,
     ];
     
     // 登録ボタンのハンドラ
     const handleOnSubmit = (values) => {
         console.log(values);
-        registerKyosoba(values);
+        registerKyosoba(values, reset);
     } 
 
     return (
@@ -99,7 +100,7 @@ function RegisterForm() {
  * 競走馬を登録するAPIを呼び出す関数
  * @param {*} param0 
  */
-async function registerKyosoba({bamei, banushi, birthday, keiro, kyusya, seibetsu, seisansya}){
+async function registerKyosoba({bamei, banushi, birthday, keiro, kyusya, seibetsu, seisansya}, reset){
     
     console.log("#registerKyosoba");
 
@@ -122,6 +123,7 @@ async function registerKyosoba({bamei, banushi, birthday, keiro, kyusya, seibets
 
     if(response.status === 200){
         alert("保存しました。");
+        reset();
     } else{
         alert("保存できませんでした。管理者にご連絡ください。");
     }
