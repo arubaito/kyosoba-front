@@ -36,7 +36,6 @@ export async function getServerSideProps() {
 
     // レース実施名と実施日付とレース実施IDを取得
     const raceZisshiNameList = await getRaceNameAndZisshiDate();
-    console.log(raceZisshiNameList);
     const kyosobaList = await getKyosoba();
     const jockeyList = await getJockey();
 
@@ -153,8 +152,8 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
             submitData.push({
                 waku:`${data.waku}`, 
                 umaban: `${data.umaban}`,
-                bamei: `${typeof data.bamei === "undefined" ? 9999 : data.bamei.id}`, 
-                kisyu: `${typeof data.kisyu === "undefined" ? 9999 : data.kisyu.kisyuId}`,
+                kyosobaId: `${typeof data.kyosobaId === "undefined" ? 9999 : data.kyosobaId.id}`, 
+                kisyuId: `${typeof data.kisyuId === "undefined" ? 9999 : data.kisyuId.kisyuId}`,
                 tyakuzyun: `${typeof data.tyakuzyun === "undefined" ? 99 : data.tyakuzyun.i}`,
                 ninki: `${typeof data.ninki === "undefined" ? 99 : data.ninki.i}`,
             })
@@ -213,7 +212,7 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
                 <td>
                     {/* 馬名 ※必須 */}
                     <Controller
-                        name={`result.${i}.bamei`}
+                        name={`result.${i}.kyosobaId`}
                         control={control}
                         rules={{required: true}}
                         render={({ field }) =>
@@ -227,7 +226,7 @@ function RegisterForm({ raceZisshiNameList, kyosobaList, jockeyList }) {
                 <td>
                     {/* 騎手名 ※必須 */}
                     <Controller
-                        name={`result.${i}.kisyu`}
+                        name={`result.${i}.kisyuId`}
                         control={control}
                         rules={{required: true}}
                         render={({ field }) =>
