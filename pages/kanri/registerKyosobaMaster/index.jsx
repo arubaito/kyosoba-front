@@ -124,6 +124,11 @@ async function registerKyosoba({bamei, banushi, birthday, keiro, kyusya, seibets
     if(response.status === 200){
         alert("保存しました。");
         reset();
+    } else if(response.status === 422) {
+        // テーブルにデータが既に登録されている場合は422エラーが返ってくる
+        // ここ分かりやすいよ^^ ⇒ https://www.webdesignleaves.com/pr/jquery/fetch-api-basic.html
+        const responseJson = await response.json();
+        alert(responseJson.message);
     } else{
         alert("保存できませんでした。管理者にご連絡ください。");
     }
