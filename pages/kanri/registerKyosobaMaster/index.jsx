@@ -67,7 +67,7 @@ function RegisterForm() {
                 <FormProvider register={register} formState={formState}>
 
                     {/* 競走馬名 */}
-                    <FormInputText labelName="馬名" formName="bamei" required="true" />
+                    <FormInputText required="true" labelName="馬名" formName="bamei" />
 
                     {/* 誕生日 */}
                     <FormInputDate required="true" labelName="誕生日" formName="birthday" />
