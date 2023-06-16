@@ -31,7 +31,7 @@ export default function RegisterJockeyMaster({ raceMasterList }) {
 function RegisterForm() {
 
     // 登録フォームの設定
-    const { register, handleSubmit, formState } = useForm({
+    const { register, handleSubmit, formState, reset } = useForm({
         mode: 'onSubmit',
         reValidateMode: 'onChange',
         defaultValues: {
@@ -41,7 +41,7 @@ function RegisterForm() {
 
     // 登録時に呼び出す関数
     const handleOnSubmit = (values) => {
-        registerJockey(values);
+        registerJockey(values, reset);
     }
 
     return (
@@ -61,7 +61,7 @@ function RegisterForm() {
     );
 }
 
-async function registerJockey({kisyumei}){
+async function registerJockey({kisyumei}, reset){
 
     console.log("registerJockey");
 
@@ -82,6 +82,7 @@ async function registerJockey({kisyumei}){
         // テーブルにデータが既に登録されている場合は422エラーが返ってくる
         const responseJson = await response.json();
         alert(responseJson.message);
+        reset();
     } else{
         alert("保存できませんでした。管理者にご連絡ください。");
     }
