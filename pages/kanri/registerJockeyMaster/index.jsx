@@ -78,6 +78,10 @@ async function registerJockey({kisyumei}){
 
     if(response.status === 200){
         alert("保存しました。");
+    } else if(response.status === 422) {
+        // テーブルにデータが既に登録されている場合は422エラーが返ってくる
+        const responseJson = await response.json();
+        alert(responseJson.message);
     } else{
         alert("保存できませんでした。管理者にご連絡ください。");
     }
