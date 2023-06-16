@@ -88,6 +88,7 @@ function RegisterForm({raceMasterList}){
     
     // 天候
     const optionsTenkoList = [
+        <option value="99" key={99}>--</option>, 
         <option value="1" key={1}>晴れ</option>, 
         <option value="2" key={2}>曇</option>, 
         <option value="3" key={3}>雨</option>, 
@@ -104,7 +105,7 @@ function RegisterForm({raceMasterList}){
 
     // 馬場
     const optionsBabaList = [
-        <option value="" key={5}>--</option>, 
+        <option value="99" key={99}>--</option>, 
         <option value="1" key={1}>良</option>, 
         <option value="2" key={2}>稍重</option>, 
         <option value="3" key={3}>重</option>, 
